@@ -1,0 +1,165 @@
+{
+  "nav": {
+    "home": "Home",
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "cv": "CV",
+    "downloadCv": "Download CV",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "hero": {
+    "viewWork": "View Work",
+    "downloadCv": "Download CV",
+    "status": "3rd Year Architecture Student",
+    "school": "Addis Ababa University (EiABC/SBE)"
+  },
+  "about": {
+    "sectionTitle": "About",
+    "readMore": "Read Full Background & Skills",
+    "educationLabel": "Education",
+    "degree": "Bachelor of Architecture",
+    "years": "2023–present"
+  },
+  "featured": {
+    "sectionTitle": "Selected Work",
+    "sectionSubtitle": "Academic projects and design competition proposals focusing on contextual rigor, cultural identity, and sustainable spatial systems.",
+    "viewAll": "View All 10 Projects",
+    "viewProject": "View Project",
+    "hoverToPause": "Hover over cards to pause",
+    "reelPaused": "Reel paused for inspection",
+    "reelGliding": "Gliding smoothly",
+    "wideView": "Inspect in Wide View"
+  },
+  "contactCta": {
+    "sectionTitle": "Let's Connect",
+    "description": "Open to academic discourse, professional internships, and architectural collaborations.",
+    "button": "Get in Touch",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email"
+  },
+  "footer": {
+    "role": "Architecture Student",
+    "school": "EiABC / SBE — Addis Ababa University",
+    "quickLinks": "Navigation",
+    "contact": "Contact",
+    "allRightsReserved": "All rights reserved."
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "locale": {
+    "switchToEn": "English",
+    "switchToAm": "አማርኛ"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "work": "Work"
+  },
+  "workPage": {
+    "title": "Work",
+    "subtitle": "Complete catalog of 10 architectural studio projects, competition entries, and material research investigations.",
+    "projectCount": "{count} Projects",
+    "viewModeWalkthrough": "Spatial Walkthrough",
+    "viewModeGrid": "Archive Grid",
+    "exploreProject": "Explore Case Study",
+    "inspectDrawings": "Inspect Drawings & Renders",
+    "keyDrawings": "Key Drawings",
+    "studioOrganizer": "Studio / Organizer",
+    "achievement": "Recognition"
+  },
+  "project": {
+    "typeLabel": "Typology",
+    "organizerLabel": "Organizer",
+    "achievementLabel": "Recognition & Award",
+    "keyConceptsLabel": "Key Architectural Concepts",
+    "galleryHeading": "Drawings & Renders",
+    "gallerySubtitle": "Select any image to inspect architectural drawings, plans, and 3D visualizations in high-resolution detail.",
+    "prevProject": "Previous Project",
+    "nextProject": "Next Project",
+    "backToWork": "Back to all projects",
+    "needsReviewTitle": "Notice: Pending Author Review",
+    "needsReviewText": "This project description is a factual placeholder derived from PDF page 17. The PDF Table of Contents mislabeled this project as 'Compacted kitchen design'. Awaiting final confirmation from Ermiyas Goshme before final publish."
+  },
+  "lightbox": {
+    "close": "Close image viewer (Esc)",
+    "next": "Next image (Right Arrow)",
+    "prev": "Previous image (Left Arrow)",
+    "counter": "{current} of {total}",
+    "openHint": "Click to expand image"
+  },
+  "aboutPage": {
+    "title": "About",
+    "subtitle": "Architectural student profile, contextual approach, design tools, and research explorations.",
+    "bioHeading": "Biography & Philosophy",
+    "educationHeading": "Academic Education",
+    "softwareHeading": "Software & Digital Tools",
+    "interestsHeading": "Architectural Interests & Focus",
+    "languagesHeading": "Languages",
+    "degree": "Bachelor of Architecture",
+    "years": "2023–present",
+    "school": "Addis Ababa University (EiABC/SBE)",
+    "cvPrompt": "Interested in full academic credentials and studio history?",
+    "downloadCv": "Download Full CV (PDF)",
+    "currentStatusLabel": "Currently",
+    "processHeading": "Design Process",
+    "galleryHeading": "In the Studio",
+    "gallerySubtitle": "Behind the designs — moments from studio, site visits, and the creative process.",
+    "galleryPlaceholder": "Image placeholder — add photo to /images/owner/",
+    "achievementsHeading": "Recognition & Development",
+    "achievementsSubtitle": "Certificates, competition entries, and professional development milestones."
+  },
+  "contactPage": {
+    "title": "Contact",
+    "subtitle": "Get in touch for academic inquiries, professional internships, and architectural collaborations.",
+    "directHeading": "Direct Contact",
+    "directSubtitle": "Feel free to reach out directly via phone or email.",
+    "formHeading": "Send a Message",
+    "formSubtitle": "Fill out the form below and your message will be forwarded directly via Web3Forms.",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "e.g. Abebe Bikila",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "e.g. name@example.com",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "e.g. Internship Inquiry / Architecture Collaboration",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Describe your project, inquiry, or collaboration opportunity...",
+    "submit": "Send Message",
+    "submitting": "Sending Message...",
+    "successTitle": "Message Sent Successfully!",
+    "successMessage": "Thank you for reaching out. Your message has been sent to Ermiyas Goshme.",
+    "sendAnother": "Send another message",
+    "errorTitle": "Unable to Send Message",
+    "errorMessage": "Something went wrong sending your message. Please try again or reach out directly by phone or email.",
+    "mockNotice": "Note: Contact form is currently in simulation mode because no Web3Forms access key is set.",
+    "requiredName": "Please enter your name.",
+    "requiredEmail": "Please enter a valid email address.",
+    "requiredMessage": "Please enter your message."
+  },
+  "cvPage": {
+    "title": "Curriculum Vitae",
+    "subtitle": "Academic record, digital modeling proficiencies, competition entries, and architectural studio projects.",
+    "downloadCta": "Download CV (PDF)",
+    "highlightsHeading": "Qualifications & Summary",
+    "previewHeading": "Document Preview",
+    "previewNotice": "If your browser cannot display the PDF viewer directly, use the button below to download.",
+    "education": "Education",
+    "skills": "Software Tools",
+    "languages": "Languages",
+    "status": "Academic Status"
+  },
+  "share": {
+    "button": "Share",
+    "shareProject": "Share this project",
+    "copied": "Link copied to clipboard!",
+    "copyLink": "Copy Link",
+    "telegram": "Telegram",
+    "whatsapp": "WhatsApp",
+    "linkedin": "LinkedIn",
+    "twitter": "X (Twitter)"
+  }
+}

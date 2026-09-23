@@ -1,0 +1,165 @@
+{
+  "nav": {
+    "home": "መነሻ",
+    "work": "ስራዎች",
+    "about": "ስለ እኔ",
+    "contact": "አግኙኝ",
+    "cv": "ሲቪ",
+    "downloadCv": "ሲቪ ያውርዱ",
+    "openMenu": "የማውጫ ሜኑ ክፈት",
+    "closeMenu": "የማውጫ ሜኑ ዝጋ"
+  },
+  "hero": {
+    "viewWork": "ስራዎችን ይመልከቱ",
+    "downloadCv": "ሲቪ ያውርዱ",
+    "status": "የ3ኛ ዓመት የስነ-ህንፃ ተማሪ",
+    "school": "አዲስ አበባ ዩኒቨርሲቲ (EiABC/SBE)"
+  },
+  "about": {
+    "sectionTitle": "ስለ እኔ",
+    "readMore": "ሙሉ የትምህርት ዝርዝር እና ክህሎቶችን ይመልከቱ",
+    "educationLabel": "ትምህርት",
+    "degree": "የስነ-ህንፃ ባችለር ዲግሪ",
+    "years": "2023–አሁን"
+  },
+  "featured": {
+    "sectionTitle": "የተመረጡ ስራዎች",
+    "sectionSubtitle": "ባህላዊ ማንነትን፣ ዘላቂ የስነ-ህንፃ ስርዓቶችን እና ማህበረሰባዊ አውድን መሰረት ያደረጉ የአካዳሚክ እና የውድድር ፕሮጀክቶች።",
+    "viewAll": "ሁሉንም 10 ፕሮጀክቶች ይመልከቱ",
+    "viewProject": "ዝርዝር ይመልከቱ",
+    "hoverToPause": "ለማቆም መዳፊትዎን በካርዱ ላይ ያሳርፉ",
+    "reelPaused": "ለዝርዝር እይታ ቆሟል",
+    "reelGliding": "በተከታታይ እየተንሸራተተ ነው",
+    "wideView": "በሰፊ ማሳያ ይመልከቱ"
+  },
+  "contactCta": {
+    "sectionTitle": "እንገናኝ",
+    "description": "ለሙያዊ ስልጠና፣ ለአካዳሚክ ውይይት እና ለጋራ የስነ-ህንፃ ስራዎች ዝግጁ ነኝ።",
+    "button": "መልዕክት ይላኩ",
+    "phoneLabel": "ስልክ",
+    "emailLabel": "ኢሜይል"
+  },
+  "footer": {
+    "role": "የስነ-ህንፃ ተማሪ",
+    "school": "ኢትዮ-አፍሪካ ስነ-ህንፃ ተቋም (EiABC) — አዲስ አበባ ዩኒቨርሲቲ",
+    "quickLinks": "ማውጫ",
+    "contact": "አድራሻ",
+    "allRightsReserved": "መብቱ በህግ የተጠበቀ ነው።"
+  },
+  "theme": {
+    "toggle": "ገጽታ ይቀይሩ",
+    "light": "ቀላል",
+    "dark": "ጨለማ",
+    "system": "የስርዓት"
+  },
+  "locale": {
+    "switchToEn": "English",
+    "switchToAm": "አማርኛ"
+  },
+  "breadcrumbs": {
+    "home": "መነሻ",
+    "work": "ስራዎች"
+  },
+  "workPage": {
+    "title": "ስራዎች",
+    "subtitle": "የተሟሉ 10 የስነ-ህንፃ ስቱዲዮ ፕሮጀክቶች፣ የውድድር ስራዎች እና የቁሳቁስ ምርምር ጥናቶች ማውጫ።",
+    "projectCount": "{count} ፕሮጀክቶች",
+    "viewModeWalkthrough": "ተከታታይ የስነ-ህንፃ ጉዞ",
+    "viewModeGrid": "ማውጫ ሰሌዳ",
+    "exploreProject": "ሙሉ ጥናቱን ይመልከቱ",
+    "inspectDrawings": "ስዕሎች እና ንድፎችን ይመልከቱ",
+    "keyDrawings": "ዋና የስነ-ህንፃ ንድፎች",
+    "studioOrganizer": "ስቱዲዮ / አዘጋጅ",
+    "achievement": "የተሰጠ እውቅና"
+  },
+  "project": {
+    "typeLabel": "የፕሮጀክት አይነት",
+    "organizerLabel": "አዘጋጅ",
+    "achievementLabel": "እውቅና እና የምስክር ወረቀት",
+    "keyConceptsLabel": "ቁልፍ የስነ-ህንፃ ፅንሰ-ሀሳቦች",
+    "galleryHeading": "ስዕሎች እና እይታዎች",
+    "gallerySubtitle": "የስነ-ህንፃ ንድፎችን፣ ፕላኖችን እና የ3ዲ እይታዎችን በዝርዝር ለመመልከት ምስሎቹን ይጫኑ።",
+    "prevProject": "የቀደመው ፕሮጀክት",
+    "nextProject": "ቀጣይ ፕሮጀክት",
+    "backToWork": "ወደ ሁሉም ስራዎች ተመለስ",
+    "needsReviewTitle": "ማስታወሻ፡ የባለቤቱ ማረጋገጫ በመጠባበቅ ላይ",
+    "needsReviewText": "ይህ የፕሮጀክት መግለጫ ከፒዲኤፍ ገጽ 17 የተወሰደ ጊዜያዊ መግለጫ ነው። በፒዲኤፉ ማውጫ ላይ 'Compacted kitchen design' ተብሎ በስህተት ተሰይሞ የነበረ ሲሆን፣ ህትመቱ ከመጠናቀቁ በፊት በኤርሚያስ ጎሽሜ የሚረጋገጥ ይሆናል።"
+  },
+  "lightbox": {
+    "close": "ምስል መመልከቻውን ዝጋ (Esc)",
+    "next": "ቀጣይ ምስል (የቀኝ ቀስት)",
+    "prev": "የቀደመው ምስል (የግራ ቀስት)",
+    "counter": "{current} ከ {total}",
+    "openHint": "ምስሉን በትልቁ ለመመልከት ጠቅ ያድርጉ"
+  },
+  "aboutPage": {
+    "title": "ስለ እኔ",
+    "subtitle": "የስነ-ህንፃ ተማሪ መገለጫ፣ የንድፍ ፍልስፍና፣ ዲጂታል መሳሪያዎች እና የምርምር ስራዎች።",
+    "bioHeading": "የግል መገለጫ እና ፍልስፍና",
+    "educationHeading": "የትምህርት ዝርዝር",
+    "softwareHeading": "የሶፍትዌር እና ዲጂታል መሳሪያዎች",
+    "interestsHeading": "የስነ-ህንፃ ትኩረት እና ፍላጎቶች",
+    "languagesHeading": "ቋንቋዎች",
+    "degree": "የስነ-ህንፃ ባችለር ዲግሪ",
+    "years": "2023–አሁን",
+    "school": "አዲስ አበባ ዩኒቨርሲቲ (EiABC/SBE)",
+    "cvPrompt": "ሙሉ የትምህርት እና የፕሮጀክት ዝርዝር ሰነድ ይፈልጋሉ?",
+    "downloadCv": "ሙሉ ሲቪ ያውርዱ (PDF)",
+    "currentStatusLabel": "በአሁኑ ጊዜ",
+    "processHeading": "የንድፍ ሂደት",
+    "galleryHeading": "በስቱዲዮ ውስጥ",
+    "gallerySubtitle": "ከንድፍ ባሻገር — ከስቱዲዮ፣ ከጉብኝት እና ከፈጠራ ሂደት የተወሰዱ ትዕይንቶች።",
+    "galleryPlaceholder": "የምስል ቦታ — ፎቶ ወደ /images/owner/ ያስገቡ",
+    "achievementsHeading": "እውቅና እና ልማት",
+    "achievementsSubtitle": "የምስክር ወረቀቶች፣ የውድድር ስራዎች እና የሙያ ማሻሻያ ደረጃዎች።"
+  },
+  "contactPage": {
+    "title": "አግኙኝ",
+    "subtitle": "ለአካዳሚክ ውይይት፣ ለስራ ልምምድ ወይም ለጋራ የስነ-ህንፃ ስራዎች መልዕክት ይላኩ።",
+    "directHeading": "ቀጥታ አድራሻዎች",
+    "directSubtitle": "በስልክ ወይም በኢሜይል በቀጥታ ማግኘት ይችላሉ።",
+    "formHeading": "መልዕክት ይላኩ",
+    "formSubtitle": "የሚከተለውን ቅጽ ይሙሉ፤ መልዕክትዎ በቀጥታ በWeb3Forms ይደርሳል።",
+    "nameLabel": "ስምዎ",
+    "namePlaceholder": "ለምሳሌ፦ አበበ ቢቂላ",
+    "emailLabel": "የኢሜይል አድራሻ",
+    "emailPlaceholder": "ለምሳሌ፦ name@example.com",
+    "subjectLabel": "ጉዳዩ",
+    "subjectPlaceholder": "ለምሳሌ፦ የስራ ልምምድ ጥያቄ / የጋራ ስራ",
+    "messageLabel": "መልዕክት",
+    "messagePlaceholder": "መልዕክትዎን እዚህ ይጻፉ...",
+    "submit": "መልዕክት ላክ",
+    "submitting": "በመላክ ላይ...",
+    "successTitle": "መልዕክትዎ በተሳካ ሁኔታ ተልኳል!",
+    "successMessage": "መልዕክትዎ ለኤርሚያስ ጎሽሜ ደርሷል። በቅርቡ ምላሽ ይሰጥዎታል።",
+    "sendAnother": "ሌላ መልዕክት ላክ",
+    "errorTitle": "መልዕክቱ አልተላከም",
+    "errorMessage": "መልዕክቱን በመላክ ላይ ችግር ተፈጥሯል። እባክዎ እንደገና ይሞክሩ ወይም በስልክ ያግኙን።",
+    "mockNotice": "ማሳሰቢያ፡ የWeb3Forms ቁልፍ እስኪገባ ቅጹ በሙከራ ሁነታ ላይ ይገኛል።",
+    "requiredName": "እባክዎ ስምዎን ያስገቡ።",
+    "requiredEmail": "እባክዎ ትክክለኛ የኢሜይል አድራሻ ያስገቡ።",
+    "requiredMessage": "እባክዎ መልዕክትዎን ያስገቡ።"
+  },
+  "cvPage": {
+    "title": "ሲቪ (CV)",
+    "subtitle": "የትምህርት ታሪክ፣ የሶፍትዌር ክህሎቶች፣ የውድድር ስራዎች እና የስነ-ህንፃ ስቱዲዮ ፕሮጀክቶች ዝርዝር።",
+    "downloadCta": "ሲቪ ያውርዱ (PDF)",
+    "highlightsHeading": "የትምህርት እና ሙያዊ ማጠቃለያ",
+    "previewHeading": "የሰነድ ቅድመ-ዕይታ",
+    "previewNotice": "አሳሽዎ ፒዲኤፍ ሰነዱን ማሳየት ካልቻለ፣ ከታች ያለውን ቁልፍ ተጠቅመው ማውረድ ይችላሉ።",
+    "education": "ትምህርት",
+    "skills": "የሶፍትዌር ክህሎቶች",
+    "languages": "ቋንቋዎች",
+    "status": "የትምህርት ደረጃ"
+  },
+  "share": {
+    "button": "አጋራ",
+    "shareProject": "ይህን ፕሮጀክት ያጋሩ",
+    "copied": "አድራሻው ተቀድቷል!",
+    "copyLink": "አድራሻ ቅዳ",
+    "telegram": "ቴሌግራም",
+    "whatsapp": "ዋትስአፕ",
+    "linkedin": "ሊንክድኢን",
+    "twitter": "ኤክስ (ትዊተር)"
+  }
+}

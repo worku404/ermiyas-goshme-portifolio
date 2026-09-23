@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architectural Top Bar Design Prototypes — Ermiyas Goshme</title>
+  
+  <!-- Google Fonts: Space Grotesk (Architectural Display) & Inter (Body Copy) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM TOKENS — Grounded in Architectural Drawing Vernacular
+       ========================================================================== */
+    :root {
+      --font-display: "Space Grotesk", -apple-system, sans-serif;
+      --font-body: "Inter", -apple-system, sans-serif;
+      --font-mono: "Space Mono", monospace;
+
+      /* Light Mode: Drafting Paper & Aksumite Terracotta */
+      --bg-canvas: #f7f5f0;
+      --bg-glass: rgba(247, 245, 240, 0.72);
+      --bg-glass-card: rgba(255, 255, 255, 0.65);
+      --border-hairline: rgba(20, 18, 15, 0.12);
+      --border-accent: rgba(168, 83, 42, 0.35);
+      --color-text: #14120f;
+      --color-text-muted: #6b645b;
+      --color-accent: #a8532a;
+      --color-accent-hover: #8e4522;
+      --color-accent-subtle: rgba(168, 83, 42, 0.1);
+      --glass-blur: 16px;
+      --pill-shadow: 0 12px 36px -4px rgba(20, 18, 15, 0.08), 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    html[data-theme="dark"] {
+      /* Dark Mode: Dark Ink & Luminous Terracotta */
+      --bg-canvas: #14120f;
+      --bg-glass: rgba(20, 18, 15, 0.72);
+      --bg-glass-card: rgba(30, 27, 23, 0.65);
+      --border-hairline: rgba(255, 255, 255, 0.12);
+      --border-accent: rgba(224, 139, 87, 0.4);
+      --color-text: #f7f5f0;
+      --color-text-muted: #b5ada3;
+      --color-accent: #e08b57;
+      --color-accent-hover: #f0a374;
+      --color-accent-subtle: rgba(224, 139, 87, 0.15);
+      --glass-blur: 16px;
+      --pill-shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      min-height: 250vh;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: relative;
+    }
+
+    /* Ambient Architectural Grid Background */
+    .blueprint-grid {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(to right, rgba(128, 128, 128, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(128, 128, 128, 0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ==========================================================================
+       PROTOTYPE SWITCHER (Floating Test Dock at Bottom)
+       ========================================================================== */
+    .prototype-dock {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      background: var(--bg-glass-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-hairline);
+      border-radius: 9999px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .dock-btn {
+      padding: 8px 16px;
+      border-radius: 9999px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--color-text-muted);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .dock-btn:hover {
+      color: var(--color-text);
+    }
+
+    .dock-btn.active {
+      background: var(--color-accent);
+      color: #ffffff;
+      border-color: var(--color-accent);
+      box-shadow: 0 2px 8px var(--color-accent-subtle);
+    }
+
+    .dock-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border-hairline);
+    }
+
+    /* ==========================================================================
+       DESIGN ALTERNATIVE 1: FLOATING GLASS CAPSULE (FLOATING PILL)
+       ========================================================================== */
+    .nav-pill-wrapper {
+      position: fixed;
+      top: 20px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justifyContent: center;
+      padding: 0 20px;
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+
+    .nav-pill {
+      pointer-events: auto;
+      background: var(--bg-glass);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--border-hairline);
+      border-radius: 9999px;
+      box-shadow: var(--pill-shadow);
+      padding: 6px 12px 6px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      max-width: 980px;
+      width: 100%;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-pill:hover {
+      border-color: var(--border-accent);
+      box-shadow: 0 16px 44px -4px rgba(168, 83, 42, 0.12), var(--pill-shadow);
+    }
+
+    /* Pill Logo */
+    .pill-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--color-text);
+    }
+    .pill-brand-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+    .pill-brand-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--color-accent-subtle);
+      color: var(--color-accent);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    /* Pill Navigation Links */
+    .pill-menu {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .pill-link {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .pill-link:hover {
+      color: var(--color-text);
+      background: rgba(128, 128, 128, 0.08);
+    }
+
+    .pill-link.active {
+      color: var(--color-accent);
+      font-weight: 600;
+      background: var(--color-accent-subtle);
+    }
+
+    /* Pill Actions Cluster (Clean & Compact) */
+    .pill-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-lang {
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border-hairline);
+      background: transparent;
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .btn-lang:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .btn-theme-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border-hairline);
+      background: transparent;
+      color: var(--color-text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.15s ease;
+    }
+    .btn-theme-icon:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      transform: rotate(20deg);
+    }
+
+    .btn-cv-pill {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: var(--color-accent);
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .btn-cv-pill:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    /* ==========================================================================
+       DESIGN ALTERNATIVE 2: SMART AUTO-HIDE EDGE BAR (HEADROOM)
+       ========================================================================== */
+    .nav-edge-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--bg-glass);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border-bottom: 1px solid var(--border-hairline);
+      padding: 12px clamp(16px, 4vw, 48px);
+      transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .nav-edge-bar.hide-up {
+      transform: translateY(-100%);
+    }
+
+    .nav-edge-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .edge-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      text-decoration: none;
+      color: var(--color-text);
+    }
+    .edge-brand h1 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .edge-brand span {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .edge-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .edge-link {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      padding: 4px 0;
+      position: relative;
+      transition: color 0.15s ease;
+    }
+    .edge-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--color-accent);
+      transition: width 0.2s ease;
+    }
+    .edge-link:hover {
+      color: var(--color-text);
+    }
+    .edge-link:hover::after,
+    .edge-link.active::after {
+      width: 100%;
+    }
+    .edge-link.active {
+      color: var(--color-text);
+    }
+
+    /* ==========================================================================
+       DESIGN ALTERNATIVE 3: DRAFTING TITLE-BLOCK & CORNER ANCHORS
+       ========================================================================== */
+    .nav-corners-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      pointer-events: none;
+      padding: 20px clamp(16px, 4vw, 40px);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .corner-title-block {
+      pointer-events: auto;
+      background: var(--bg-glass-card);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--border-hairline);
+      border-left: 3px solid var(--color-accent);
+      padding: 10px 16px;
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .corner-title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text);
+    }
+    .corner-subtitle {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-text-muted);
+    }
+
+    .corner-palette {
+      pointer-events: auto;
+      background: var(--bg-glass-card);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--border-hairline);
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    /* ==========================================================================
+       MOCK PAGE CONTENT (For Testing Scroll & Readability)
+       ========================================================================== */
+    .demo-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 140px 24px 180px;
+    }
+
+    .demo-card {
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: 12px;
+      padding: 36px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(4px);
+    }
+    .demo-card h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      margin-bottom: 12px;
+      color: var(--color-text);
+    }
+    .demo-card p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+      margin-bottom: 18px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--color-accent-subtle);
+      color: var(--color-accent);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Blueprint Drafting Grid -->
+  <div class="blueprint-grid"></div>
+
+  <!-- ====================================================================
+       1. ALTERNATIVE 1: FLOATING GLASS CAPSULE (DEFAULT ACTIVE)
+       ==================================================================== -->
+  <div class="nav-pill-wrapper" id="navAlt1">
+    <nav class="nav-pill" aria-label="Main Navigation">
+      <!-- Brand Link -->
+      <a href="#home" class="pill-brand">
+        <span class="pill-brand-title">Ermiyas Goshme</span>
+        <span class="pill-brand-badge">ARCH</span>
+      </a>
+
+      <!-- Menu Items -->
+      <ul class="pill-menu">
+        <li><a href="#work" class="pill-link active">Work</a></li>
+        <li><a href="#about" class="pill-link">About</a></li>
+        <li><a href="#contact" class="pill-link">Contact</a></li>
+        <li><a href="#cv" class="pill-link">CV</a></li>
+      </ul>
+
+      <!-- Action Cluster -->
+      <div class="pill-actions">
+        <!-- Language Switcher -->
+        <button class="btn-lang" onclick="toggleLang(this)" title="Switch Language">
+          <span>EN</span>
+          <span style="opacity: 0.4;">|</span>
+          <span style="opacity: 0.5;">አም</span>
+        </button>
+
+        <!-- Theme Toggle Icon -->
+        <button class="btn-theme-icon" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <span id="themeIcon">🌓</span>
+        </button>
+
+        <!-- CV Action Pill -->
+        <a href="#cv" class="btn-cv-pill" title="Download CV">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          <span>CV</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ====================================================================
+       2. ALTERNATIVE 2: SMART AUTO-HIDE EDGE BAR
+       ==================================================================== -->
+  <header class="nav-edge-bar" id="navAlt2" style="display: none;">
+    <div class="nav-edge-inner">
+      <a href="#home" class="edge-brand">
+        <h1>ERMIYAS GOSHME</h1>
+        <span>AAU EiABC/SBE · ARCHITECTURE 2026</span>
+      </a>
+
+      <ul class="edge-links">
+        <li><a href="#work" class="edge-link active">Work</a></li>
+        <li><a href="#about" class="edge-link">About</a></li>
+        <li><a href="#contact" class="edge-link">Contact</a></li>
+        <li><a href="#cv" class="edge-link">Curriculum Vitae</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="btn-lang" onclick="toggleLang(this)">EN | አም</button>
+        <button class="btn-theme-icon" onclick="toggleTheme()">🌓</button>
+        <a href="#cv" class="btn-cv-pill" style="border-radius: 4px;">Download CV ↓</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       3. ALTERNATIVE 3: DRAFTING TITLE-BLOCK & CORNER ANCHORS
+       ==================================================================== -->
+  <div class="nav-corners-wrapper" id="navAlt3" style="display: none;">
+    <div class="corner-title-block">
+      <div class="corner-title">Ermiyas Goshme</div>
+      <div class="corner-subtitle">PORTFOLIO · SHEET 01 / 10</div>
+    </div>
+
+    <div class="corner-palette">
+      <a href="#work" class="pill-link active" style="font-weight: 700;">Work</a>
+      <a href="#about" class="pill-link">About</a>
+      <a href="#contact" class="pill-link">Contact</a>
+      <a href="#cv" class="pill-link">CV</a>
+      <span style="width: 1px; height: 16px; background: var(--border-hairline);"></span>
+      <button class="btn-lang" onclick="toggleLang(this)">EN</button>
+      <button class="btn-theme-icon" onclick="toggleTheme()">🌓</button>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       SAMPLE CONTENT TO TEST SCROLL BEHAVIOR
+       ==================================================================== -->
+  <main class="demo-content">
+    <div class="status-badge">INTERACTIVE PROTOTYPE TESTBENCH</div>
+    <h1 style="font-family: var(--font-display); font-size: clamp(32px, 5vw, 54px); margin-bottom: 24px; letter-spacing: -0.02em;">
+      Architecture Header Optimization
+    </h1>
+    <p style="font-size: 18px; color: var(--color-text-muted); max-width: 65ch; margin-bottom: 48px; line-height: 1.6;">
+      Test all 3 modern architectural navigation designs live. Scroll down to test the auto-hide and floating behaviors, toggle dark/light mode, and compare button structures.
+    </p>
+
+    <article class="demo-card">
+      <h2>Option 1: Floating Glass Capsule (Floating Pill)</h2>
+      <p>
+        <strong>Why It Works:</strong> Detaches the navigation from the browser window edge, letting the background architectural video and grid flow freely above and around the pill. It creates high-end visual depth through frosted glass (16px blur) and consolidates utility buttons into a compact cluster.
+      </p>
+      <p>
+        <strong>Button Hierarchy:</strong> The verbose <code>Theme: light (light)</code> button is streamlined into a minimal <code>🌓</code> icon, language is compacted into <code>EN | አም</code>, and <code>CV ↓</code> is a subtle jewel CTA.
+      </p>
+    </article>
+
+    <article class="demo-card">
+      <h2>Option 2: Smart Auto-Hide Edge Bar (Headroom)</h2>
+      <p>
+        <strong>Why It Works:</strong> When the visitor scrolls down to view blueprints, models, and sketches, the header glides smoothly off the top of the screen (0% obstruction). The second the visitor scrolls up even 10px, it glides back down instantly for effortless navigation.
+      </p>
+      <p>
+        <strong>Interaction:</strong> Try scrolling down on this page to test the auto-hide effect!
+      </p>
+    </article>
+
+    <article class="demo-card">
+      <h2>Option 3: Drafting Title-Block & Corner Anchors</h2>
+      <p>
+        <strong>Why It Works:</strong> Inspired by traditional drafting drawing sheets where title blocks, sheet numbers, and project metadata are pinned to sheet corners, leaving the entire center open for architectural presentation.
+      </p>
+    </article>
+
+    <article class="demo-card">
+      <h2>Design Tokens & Typography Specs</h2>
+      <ul style="padding-left: 20px; line-height: 1.8; color: var(--color-text-muted);">
+        <li><strong>Brand Font:</strong> Space Grotesk 700 / 15px / Letter-spacing -0.01em</li>
+        <li><strong>Navigation Font:</strong> Inter 500 / 13px / Letter-spacing 0</li>
+        <li><strong>Badge / Coordinates Font:</strong> Space Mono 700 / 10px / Uppercase</li>
+        <li><strong>Glassmorphism:</strong> <code>backdrop-filter: blur(16px)</code> with 1px hairline border</li>
+        <li><strong>Colors:</strong> Aksumite Terracotta (<code>#A8532A</code> in light, <code>#E08B57</code> in dark)</li>
+      </ul>
+    </article>
+  </main>
+
+  <!-- ====================================================================
+       INTERACTIVE DOCK (Bottom Switcher)
+       ==================================================================== -->
+  <div class="prototype-dock">
+    <button class="dock-btn active" onclick="switchDesign(1, this)">1. Floating Pill</button>
+    <button class="dock-btn" onclick="switchDesign(2, this)">2. Smart Edge Bar</button>
+    <button class="dock-btn" onclick="switchDesign(3, this)">3. Corner Anchors</button>
+    <div class="dock-divider"></div>
+    <button class="dock-btn" onclick="toggleTheme()" title="Toggle Theme">🌓 Light / Dark</button>
+  </div>
+
+  <script>
+    let currentDesign = 1;
+    let lastScrollY = window.scrollY;
+
+    function switchDesign(num, btn) {
+      currentDesign = num;
+      document.getElementById('navAlt1').style.display = (num === 1) ? 'flex' : 'none';
+      document.getElementById('navAlt2').style.display = (num === 2) ? 'block' : 'none';
+      document.getElementById('navAlt3').style.display = (num === 3) ? 'flex' : 'none';
+
+      document.querySelectorAll('.dock-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const cur = html.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+    }
+
+    function toggleLang(btn) {
+      if (btn.textContent.includes('EN')) {
+        btn.innerHTML = '<span>አም</span> <span style="opacity:0.4;">|</span> <span style="opacity:0.5;">EN</span>';
+      } else {
+        btn.innerHTML = '<span>EN</span> <span style="opacity:0.4;">|</span> <span style="opacity:0.5;">አም</span>';
+      }
+    }
+
+    // Smart Auto-Hide on Scroll (For Option 2 and Option 1)
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const edgeBar = document.getElementById('navAlt2');
+      const pillWrapper = document.getElementById('navAlt1');
+
+      if (currentDesign === 2) {
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+          // Scrolling down -> hide header
+          edgeBar.classList.add('hide-up');
+        } else {
+          // Scrolling up -> reveal header
+          edgeBar.classList.remove('hide-up');
+        }
+      }
+
+      if (currentDesign === 1) {
+        if (currentScrollY > lastScrollY && currentScrollY > 120) {
+          pillWrapper.style.transform = 'translateY(-120%)';
+          pillWrapper.style.opacity = '0';
+        } else {
+          pillWrapper.style.transform = 'translateY(0)';
+          pillWrapper.style.opacity = '1';
+        }
+      }
+
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  </script>
+</body>
+</html>

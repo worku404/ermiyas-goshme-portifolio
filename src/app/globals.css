@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Design Tokens - Grounded in architectural drawing vernacular (paper, concrete, ink)
+   with an Aksumite earth tone terracotta accent. All color pairs are verified
+   against WCAG 2.1 AA requirements (docs/02-design-system.md).
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --color-bg: #f7f5f0; /* paper */
+  --color-surface: rgba(255, 255, 255, 0.78); /* translucent raised card */
+  --color-surface-2: rgba(236, 232, 224, 0.82); /* translucent concrete */
+
+  /* Ambient Video Background Tokens */
+  --bg-video-opacity: 0.28;
+  --bg-video-filter: contrast(1.1) brightness(0.95);
+  --bg-video-blend: normal;
+
+  /* Text (ink) */
+  --color-text: #1a1815; /* primary ink (~14.9:1 on bg) */
+  --color-text-muted: #5c574f; /* secondary ink (~6.7:1 on bg) */
+
+  /* Accent (terracotta) */
+  --color-accent: #a8532a; /* terracotta (~4.6:1 on bg) */
+  --color-accent-hover: #8e4522;
+  --color-on-accent: #ffffff; /* ~5.1:1 on accent */
+
+  /* Lines / borders */
+  --color-border: #d8d2c7;
+  --color-focus: #a8532a;
+
+  /* Typography scale (modular scale, base 16px, ratio 1.25 major third) */
+  --fs-xs: 0.64rem; /* ~10px */
+  --fs-sm: 0.8rem; /* ~13px */
+  --fs-base: 1rem; /* ~16px */
+  --fs-md: 1.25rem; /* ~20px */
+  --fs-lg: 1.563rem; /* ~25px */
+  --fs-xl: 1.953rem; /* ~31px */
+  --fs-2xl: 2.441rem; /* ~39px */
+  --fs-3xl: 3.052rem; /* ~49px */
+  --fs-4xl: 3.815rem; /* ~61px */
+
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+  --max-measure: 66ch;
+
+  /* Spacing Scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  /* Breakpoints (min-width reference) */
+  --bp-xs: 360px;
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+
+  /* Motion Tokens */
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 360ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1.2);
+
+  /* Elevation & Border Tokens */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --border-hairline: 1px solid var(--color-border);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+
+.dark {
+  /* Surfaces */
+  --color-bg: #14120f; /* dark ink */
+  --color-surface: rgba(30, 27, 23, 0.78);
+  --color-surface-2: rgba(38, 34, 25, 0.82);
+
+  /* Ambient Video Background Tokens */
+  --bg-video-opacity: 0.35;
+  --bg-video-filter: none;
+  --bg-video-blend: screen;
+
+  /* Text */
+  --color-text: #f2eee6; /* paper on dark (~15.6:1 on bg) */
+  --color-text-muted: #b3ac9f; /* ~8.7:1 on bg */
+
+  /* Accent (lifted for dark contrast) */
+  --color-accent: #e08b57; /* lighter terracotta (~7.6:1 on bg) */
+  --color-accent-hover: #eea271;
+  --color-on-accent: #1a1815; /* ~7.6:1 on accent */
+
+  /* Lines / borders */
+  --color-border: #35302a;
+  --color-focus: #e08b57;
+}
+
+/* Glassmorphic card and surface backdrop blur */
+.site-header,
+.site-card,
+article,
+section[data-glass="true"] {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+}
+
+/* Reduced Motion Override per docs/02-design-system.md §7 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base Styles & Resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  color-scheme: light dark;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family:
+    var(--font-body),
+    system-ui,
+    -apple-system,
+    sans-serif;
+  line-height: var(--lh-body);
+  min-height: 100vh;
+  transition:
+    background-color var(--dur-base) var(--ease-standard),
+    color var(--dur-base) var(--ease-standard);
+}
+
+/* Headings use display font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), var(--font-body), serif;
+  line-height: var(--lh-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Amharic content uses Noto Sans Ethiopic */
+:lang(am),
+[lang="am"] {
+  font-family: var(--font-am), system-ui, sans-serif;
+}
+
+/* Accessible visible focus states per docs/02 §9 */
+:where(a, button, [tabindex], input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    color var(--dur-fast) var(--ease-standard),
+    opacity var(--dur-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-accent) !important;
+}
+
+/* Maintain proper contrast for active nav links and filled button links */
+a[aria-current="page"]:hover {
+  color: #ffffff !important;
+}
+
+a[style*="var(--color-on-accent)"]:hover {
+  color: var(--color-on-accent) !important;
+}
+
+a[style*="var(--color-bg)"]:hover {
+  color: var(--color-bg) !important;
+}
+
+
+/* ===== Page Enter Animation ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Applied to the page-level Container */
+.page-enter {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Staggered section reveals inside the page container.
+   Each direct-child section/div delays slightly after the previous one. */
+.page-enter > *:nth-child(1) { animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both; }
+.page-enter > *:nth-child(2) { animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+.page-enter > *:nth-child(3) { animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
+.page-enter > *:nth-child(4) { animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both; }
+.page-enter > *:nth-child(5) { animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both; }
+.page-enter > *:nth-child(6) { animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.48s both; }
+.page-enter > *:nth-child(7) { animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.53s both; }
+.page-enter > *:nth-child(8) { animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.58s both; }
+.page-enter > *:nth-child(n+9) { animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.62s both; }
+

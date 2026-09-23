@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ermiyas-goshme.vercel.app/sitemap.xml

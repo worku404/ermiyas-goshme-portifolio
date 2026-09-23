@@ -1,0 +1,1048 @@
+{
+  "$schema": "./portfolio.schema.md",
+  "meta": {
+    "note": "GROUND TRUTH extracted verbatim from ERMIYAS_GOSHME_Portfolio_2026.pdf (18 pages). Titles primarily from the Table of Contents on PDF page 3; descriptions/types from each project's body page. Do NOT invent, embellish, or drop content. The AI builder must DISPLAY the real images as content and must never generate or reimagine images. Any field marked NEEDS_REVIEW must be confirmed by the owner before final publish.",
+    "sourcePdf": "ERMIYAS_GOSHME_Portfolio_2026.pdf",
+    "pdfPageCount": 18,
+    "extractedWith": "PyMuPDF 1.27",
+    "lastReviewedByOwner": false,
+    "languages": ["en", "am"],
+    "imagesPopulatedFromDisk": true,
+    "imageNote": "Image src paths point to .png placeholder files currently on disk. They will be swapped to optimized formats (AVIF/WebP) later WITHOUT changing the base filename contract <slug>-NN. next/image transcodes PNG sources at build time. alt/altAm/caption/captionAm are intentionally empty pending owner review; width/height are null pending optimization."
+  },
+  "owner": {
+    "name": "Ermiyas Goshme",
+    "role": "Architecture Student",
+    "statusLine": "3rd year architecture student",
+    "school": "Addis Ababa University (EiABC/SBE)",
+    "educationDegree": "Bachelor of Architecture",
+    "educationYears": "2023–present",
+    "email": "ermiermiyas000@gmail.com",
+    "phone": "+251996631973",
+    "phoneTelHref": "tel:+251996631973",
+    "languages": ["English", "Amharic"],
+    "interests": [
+      "Human centered design",
+      "Cultural identity and heritage",
+      "Architectural visualization",
+      "Urban design and public space"
+    ],
+    "software": ["Revit", "SketchUp", "D5 Render", "Illustrator"],
+    "currentStatus": "Seeking summer 2027 internship opportunities in architecture firms — Addis Ababa, Nairobi, or Dubai",
+    "designProcess": [
+      { "step": "Research", "description": "Site analysis, precedent studies, cultural context investigation" },
+      { "step": "Concept", "description": "Spatial narratives, parti diagrams, design philosophy development" },
+      { "step": "Modeling", "description": "3D massing in SketchUp & Revit, iterative form refinement" },
+      { "step": "Representation", "description": "Architectural visualization, drawing production, D5 Render outputs" }
+    ],
+    "studioGallery": [
+      {
+        "src": "/images/owner/gallery-01.png",
+        "caption": "PLACEHOLDER — Replace with: photo of Ermiyas working on a studio model or site visit"
+      },
+      {
+        "src": "/images/owner/gallery-02.png",
+        "caption": "PLACEHOLDER — Replace with: photo from a design critique or presentation at EiABC"
+      },
+      {
+        "src": "/images/owner/gallery-03.png",
+        "caption": "PLACEHOLDER — Replace with: photo of hand sketching or drafting process"
+      },
+      {
+        "src": "/images/owner/gallery-04.png",
+        "caption": "PLACEHOLDER — Replace with: photo from a site visit or construction observation"
+      }
+    ],
+    "achievements": [
+      {
+        "title": "Certificate of Participation — Church Design Competition",
+        "issuer": "Mahibere Kidusan (MK)",
+        "year": "2025",
+        "description": "Submitted a conceptual Ethiopian Orthodox Church design exploring the relationship between traditional spiritual values and contemporary architectural expression."
+      },
+      {
+        "title": "PLACEHOLDER — Replace with your certificate/achievement title",
+        "issuer": "PLACEHOLDER — Issuing organization",
+        "year": "2025",
+        "description": "PLACEHOLDER — Brief description of what you learned or achieved. Delete this entry if not needed."
+      }
+    ]
+  },
+  "about": "I am a 3rd year architecture student passionate about creating meaningful spaces that respond to people, culture, and the environment. Through academic projects and design explorations, I focus on human-centered architecture, contextual understanding, and sustainable design approaches. My design process combines research, conceptual thinking, digital modeling, and architectural representation to transform ideas into functional and engaging spaces. I have developed skills in architectural visualization, 3D modeling, and technical documentation using Revit, SketchUp, Illustrator and D5 Render. I am eager to learn from professional practice and contribute creative and thoughtful design solutions to real world challenges.",
+  "projects": [
+    {
+      "id": 1,
+      "slug": "ethiopian-orthodox-church-design",
+      "tocTitle": "Church design",
+      "fullTitle": "Ethiopian Orthodox Church Design",
+      "type": "Design Competition",
+      "organizer": "Mahibere Kidusan (MK)",
+      "description": "A conceptual design proposal for an Ethiopian Orthodox Church that explores the relationship between traditional spiritual values and contemporary architectural expression. The design focuses on creating a sacred atmosphere through the integration of spatial transformation, movement, geometry, and natural light, enhancing the spiritual experience of worshippers.",
+      "achievement": "Certificate of Participation – Mahibere Kidusan Church Design Competition",
+      "pdfPages": [4, 5, 6, 7],
+      "imageCountInPdf": 47,
+      "images": [
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-01.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": true,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-02.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-03.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-04.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-05.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-06.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-07.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-08.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-09.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-10.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-11.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-12.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-13.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-14.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-15.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "enda-mikael-palace-reimagination",
+      "tocTitle": "Re imagination of Endamikael palace",
+      "fullTitle": "Enda Mikael Palace Re-imagination",
+      "type": "Historical Architectural Interpretation",
+      "description": "Enda Mikael Palace represents the cultural and political identity of the Aksumite Kingdom, reflecting royal authority, ceremonial functions, and traditional architectural values. This project reinterprets the palace through a contemporary design approach, focusing on monumentality, procession, hierarchy, and spatial experience. The design preserves key Aksumite principles such as axial movement, terraced platforms, and symbolic geometry while creating a renewed architectural expression of heritage and memory.",
+      "achievement": null,
+      "pdfPages": [8, 9],
+      "imageCountInPdf": 9,
+      "images": [
+        {
+          "src": "/images/work/enda-mikael-palace-reimagination/enda-mikael-palace-reimagination-01.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": true,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/enda-mikael-palace-reimagination/enda-mikael-palace-reimagination-02.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/enda-mikael-palace-reimagination/enda-mikael-palace-reimagination-03.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/enda-mikael-palace-reimagination/enda-mikael-palace-reimagination-04.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/enda-mikael-palace-reimagination/enda-mikael-palace-reimagination-05.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/enda-mikael-palace-reimagination/enda-mikael-palace-reimagination-06.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/enda-mikael-palace-reimagination/enda-mikael-palace-reimagination-07.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/enda-mikael-palace-reimagination/enda-mikael-palace-reimagination-08.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/enda-mikael-palace-reimagination/enda-mikael-palace-reimagination-09.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "climate-responsive-high-school",
+      "tocTitle": "Climate responsive school design",
+      "fullTitle": "Climate Responsive High School Design – Debre Birhan",
+      "type": "Architectural Science / HVAC Design Study",
+      "description": "A climate-responsive high school design developed for the cold conditions of Debre Birhan. The project focuses on passive environmental strategies by analyzing solar orientation, latitude, sun path, and daylight conditions. The building form, orientation, and openings are designed to maximize solar heat gain, improve natural lighting, and create comfortable learning spaces while reducing energy demand.",
+      "keyConcepts": [
+        "Solar orientation for effective heat gain",
+        "Passive heating strategies for cold climate",
+        "Daylight optimization through building openings",
+        "Climate-based spatial planning"
+      ],
+      "achievement": null,
+      "pdfPages": [10],
+      "imageCountInPdf": 4,
+      "images": [
+        {
+          "src": "/images/work/climate-responsive-high-school/climate-responsive-high-school-01.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": true,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/climate-responsive-high-school/climate-responsive-high-school-02.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/climate-responsive-high-school/climate-responsive-high-school-03.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/climate-responsive-high-school/climate-responsive-high-school-04.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/climate-responsive-high-school/climate-responsive-high-school-05.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/climate-responsive-high-school/climate-responsive-high-school-06.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/climate-responsive-high-school/climate-responsive-high-school-07.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "street-playground",
+      "tocTitle": "Street playground",
+      "fullTitle": "Street Playground – Seminar Week Project",
+      "type": "Children's Play Space / Urban Intervention",
+      "description": "A child-centered street playground designed for children under 6 years old, transforming an ordinary street into an interactive and playful environment. The project is based on the concept of a \"playful journey,\" where children explore a sequence of spaces through movement, imagination, and discovery. The design encourages physical activity, creativity, and social interaction by integrating playful elements, sensory experiences, and safe areas for children and caregivers. It demonstrates how urban spaces can be temporarily transformed into inclusive environments that support early childhood development.",
+      "achievement": null,
+      "pdfPages": [11],
+      "imageCountInPdf": 5,
+      "images": [
+        {
+          "src": "/images/work/street-playground/street-playground-01.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": true,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/street-playground/street-playground-02.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/street-playground/street-playground-03.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/street-playground/street-playground-04.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/street-playground/street-playground-05.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "adaptive-corridor-residential",
+      "tocTitle": "urban project of residential building",
+      "fullTitle": "Adaptive Corridor – Residential Buildings",
+      "type": "Residential Design",
+      "description": "The residential buildings are designed as flexible living spaces that respond to urban needs while creating a balance between privacy and community interaction. The design integrates efficient spatial organization, natural light, ventilation, and shared spaces to enhance residents' quality of life.",
+      "achievement": null,
+      "pdfPages": [12],
+      "imageCountInPdf": 4,
+      "images": [
+        {
+          "src": "/images/work/adaptive-corridor-residential/adaptive-corridor-residential-01.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": true,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-residential/adaptive-corridor-residential-02.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-residential/adaptive-corridor-residential-03.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-residential/adaptive-corridor-residential-04.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-residential/adaptive-corridor-residential-05.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-residential/adaptive-corridor-residential-06.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-residential/adaptive-corridor-residential-07.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "adaptive-corridor-community-hall",
+      "tocTitle": "community hall design",
+      "fullTitle": "Adaptive Corridor – Community Hall",
+      "type": "Community Facility",
+      "description": "The community hall functions as a social hub within the adaptive corridor, providing a flexible space for gatherings, cultural activities, and community interaction. The design focuses on openness, adaptability, and strengthening connections between people and the surrounding urban environment.",
+      "achievement": null,
+      "pdfPages": [13],
+      "imageCountInPdf": 9,
+      "images": [
+        {
+          "src": "/images/work/adaptive-corridor-community-hall/adaptive-corridor-community-hall-01.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": true,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-community-hall/adaptive-corridor-community-hall-02.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-community-hall/adaptive-corridor-community-hall-03.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-community-hall/adaptive-corridor-community-hall-04.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-community-hall/adaptive-corridor-community-hall-05.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-community-hall/adaptive-corridor-community-hall-06.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-community-hall/adaptive-corridor-community-hall-07.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-community-hall/adaptive-corridor-community-hall-08.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/adaptive-corridor-community-hall/adaptive-corridor-community-hall-09.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "eiabc-football-field-landscape",
+      "tocTitle": "Landscape design",
+      "fullTitle": "Football Field Landscape Design – At EIABC",
+      "type": "Landscape Architecture Design Study",
+      "description": "A multifunctional sports landscape design developed for the EIABC campus, integrating recreation, landscape, and social interaction. The project includes a football field, swimming pool, basketball court, existing vegetable gardens, and surrounding facilities such as cafés and gathering spaces. The design focuses on creating a connected outdoor environment that combines active sports areas with green spaces, improving campus experience and community engagement.",
+      "achievement": null,
+      "pdfPages": [14],
+      "imageCountInPdf": 6,
+      "images": [
+        {
+          "src": "/images/work/eiabc-football-field-landscape/eiabc-football-field-landscape-01.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": true,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/eiabc-football-field-landscape/eiabc-football-field-landscape-02.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/eiabc-football-field-landscape/eiabc-football-field-landscape-03.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/eiabc-football-field-landscape/eiabc-football-field-landscape-04.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/eiabc-football-field-landscape/eiabc-football-field-landscape-05.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/eiabc-football-field-landscape/eiabc-football-field-landscape-06.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "compact-climate-responsive-house",
+      "tocTitle": "appropriate building",
+      "fullTitle": "Compact Climate Responsive House – Debre Birhan",
+      "type": "Appropriate Building Technology / Climate Responsive Design",
+      "description": "A compact residential design developed for the cold climate of Debre Birhan, focusing on passive heating and thermal comfort. The design uses the concept of a thermal hearth as a central warm zone that supports heat distribution and improves indoor comfort. The compact form, spatial organization, solar orientation, and material strategies are designed to reduce heat loss, maximize solar gain, and create an energy-efficient living environment adapted to the local climate.",
+      "achievement": null,
+      "pdfPages": [15],
+      "imageCountInPdf": 7,
+      "images": [
+        {
+          "src": "/images/work/compact-climate-responsive-house/compact-climate-responsive-house-01.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": true,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/compact-climate-responsive-house/compact-climate-responsive-house-02.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/compact-climate-responsive-house/compact-climate-responsive-house-03.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/compact-climate-responsive-house/compact-climate-responsive-house-04.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/compact-climate-responsive-house/compact-climate-responsive-house-05.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/compact-climate-responsive-house/compact-climate-responsive-house-06.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/compact-climate-responsive-house/compact-climate-responsive-house-07.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/compact-climate-responsive-house/compact-climate-responsive-house-08.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "urban-spine-revitalization",
+      "tocTitle": "Urban project",
+      "fullTitle": "Urban Spine Revitalization Project",
+      "type": "Urban Design / Public Space Revitalization",
+      "description": "A strategic urban intervention developed along the Integrated Urban Spine of Addis Ababa, focusing on the revitalization of the BGI brewery area near Mexico Square. The project explores how architecture and public space can reconnect communities with the cultural identity and memories of a place. The design transforms an underused urban area into a vibrant social and cultural hub by integrating public activities, creative spaces, informal economies, and community-oriented experiences. The project emphasizes pedestrian connectivity, local identity, and inclusive urban interaction.",
+      "achievement": null,
+      "pdfPages": [16],
+      "imageCountInPdf": 3,
+      "images": [
+        {
+          "src": "/images/work/urban-spine-revitalization/urban-spine-revitalization-01.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": true,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/urban-spine-revitalization/urban-spine-revitalization-02.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/urban-spine-revitalization/urban-spine-revitalization-03.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "breathable-clay-wall-system",
+      "tocTitle": "Compacted kitchen design (MISLABELED in PDF Table of Contents)",
+      "fullTitle": "Breathable Clay Wall System",
+      "type": "Appropriate Building Technology / Material Research",
+      "description": "NEEDS_REVIEW (author to confirm/refine): A material-research investigation into breathable clay wall systems suited to hot and humid climates. The study explores how locally sourced earthen materials can regulate indoor humidity and temperature through natural moisture exchange and thermal mass, offering a low-energy, contextually appropriate approach to building comfort. Note: the PDF Table of Contents mislabels this project as 'Compacted kitchen design'; the actual project page (PDF p.17) contains material-research content with no kitchen program. Title corrected to reflect real content.",
+      "achievement": null,
+      "pdfPages": [17],
+      "imageCountInPdf": 15,
+      "images": [
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-01.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": true,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-02.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-03.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-04.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-05.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-06.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-07.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-08.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-09.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-10.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-11.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-12.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-13.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        },
+        {
+          "src": "/images/work/breathable-clay-wall-system/breathable-clay-wall-system-14.png",
+          "alt": "",
+          "altAm": "",
+          "caption": "",
+          "captionAm": "",
+          "isHero": false,
+          "width": null,
+          "height": null
+        }
+      ]
+    }
+  ],
+  "openIssues": [
+    "Project 10 (Breathable Clay Wall System): body page (PDF p.17) has no description text; description above is a factual placeholder marked NEEDS_REVIEW — owner to confirm/refine. ToC label 'Compacted kitchen design' was wrong and has been corrected.",
+    "Image→project mapping must be verified VISUALLY during the asset pipeline; do not trust PDF order or ToC page numbers.",
+    "Bilingual EN/AM: keep Amharic (Ge'ez) captions where the PDF has them (e.g. church site-plan legend, section names) and provide English alongside.",
+    "PDF page 5 contains ~40 embedded images (mostly plan/section fragments) — most are NOT portfolio hero images; curate heavily.",
+    "All PDF-embedded images are presentation-resolution placeholders (foundation only); replace with high-res originals later using the stable filename contract in docs/05-asset-pipeline.md."
+  ]
+}
