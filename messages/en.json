@@ -20,7 +20,13 @@
     "readMore": "Read Full Background & Skills",
     "educationLabel": "Education",
     "degree": "Bachelor of Architecture",
-    "years": "2023–present"
+    "years": "2023–present",
+    "metricsYear": "Academic Stage",
+    "metricsProjects": "Studio Projects",
+    "metricsRecognition": "Church Design",
+    "toolingHeading": "Architectural Tooling Stack",
+    "focusHeading": "Core Architectural Focus",
+    "seekingBadge": "Seeking Summer 2027 Internship"
   },
   "featured": {
     "sectionTitle": "Selected Work",

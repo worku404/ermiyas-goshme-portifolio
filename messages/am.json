@@ -20,7 +20,13 @@
     "readMore": "ሙሉ የትምህርት ዝርዝር እና ክህሎቶችን ይመልከቱ",
     "educationLabel": "ትምህርት",
     "degree": "የስነ-ህንፃ ባችለር ዲግሪ",
-    "years": "2023–አሁን"
+    "years": "2023–አሁን",
+    "metricsYear": "የትምህርት ደረጃ",
+    "metricsProjects": "የስቱዲዮ ፕሮጀክቶች",
+    "metricsRecognition": "የቤተክርስቲያን ዲዛይን",
+    "toolingHeading": "የስነ-ህንፃ ዲጂታል ሶፍትዌሮች",
+    "focusHeading": "ዋና የዲዛይን ትኩረቶች",
+    "seekingBadge": "ለ2027 የክረምት ልምምድ (Internship) ክፍት"
   },
   "featured": {
     "sectionTitle": "የተመረጡ ስራዎች",
