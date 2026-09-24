@@ -23,13 +23,20 @@ export function Hero() {
     <section
       aria-label="Introduction"
       style={{
-        paddingTop: "clamp(var(--space-8), 6vw, var(--space-16))",
-        paddingBottom: "clamp(var(--space-8), 6vw, var(--space-16))",
+        minHeight: "calc(100dvh - clamp(64px, 8vw, 88px))",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        paddingTop: "var(--space-4)",
+        paddingBottom: "var(--space-8)",
         borderBottom: "var(--border-hairline)",
+        boxSizing: "border-box",
+        position: "relative",
       }}
     >
       <div
         style={{
+          width: "100%",
           display: "grid",
           gridTemplateColumns:
             "repeat(auto-fit, minmax(min(100%, 460px), 1fr))",
