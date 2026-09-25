@@ -30,7 +30,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: "/images/owner/profile.png",
+          url: "/images/owner/ermiyas-goshme-hero.jpg",
           width: 800,
           height: 800,
           alt: `${portfolio.owner.name} — Contact`,
@@ -41,7 +41,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["/images/owner/profile.png"],
+      images: ["/images/owner/ermiyas-goshme-hero.jpg"],
     },
   };
 }
@@ -67,28 +67,61 @@ export default async function ContactPage({
     <Container size="default">
       <div
         style={{
-          paddingTop: "clamp(var(--space-8), 6vw, var(--space-16))",
+          paddingTop: "clamp(var(--space-3), 2vw, var(--space-6))",
           paddingBottom: "clamp(var(--space-10), 8vw, var(--space-20))",
         }}
       >
         {/* Page Header */}
         <div style={{ marginBottom: "clamp(var(--space-8), 6vw, var(--space-12))" }}>
-          <span
-            style={{
-              display: "inline-block",
-              padding: "var(--space-1) var(--space-3)",
-              backgroundColor: "var(--color-surface-2)",
-              color: "var(--color-accent)",
-              borderRadius: "var(--radius-sm)",
-              fontSize: "var(--fs-xs)",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              marginBottom: "var(--space-3)",
-            }}
-          >
-            {t("title")}
-          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap", marginBottom: "var(--space-3)" }}>
+            <span
+              style={{
+                display: "inline-block",
+                padding: "var(--space-1) var(--space-3)",
+                backgroundColor: "var(--color-surface-2)",
+                color: "var(--color-accent)",
+                borderRadius: "var(--radius-sm)",
+                fontSize: "var(--fs-xs)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+              }}
+            >
+              {t("title")}
+            </span>
+
+            {/* Availability Status Indicator Pill */}
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "3px 12px",
+                borderRadius: "9999px",
+                backgroundColor: "rgba(16, 185, 129, 0.12)",
+                border: "1px solid rgba(16, 185, 129, 0.3)",
+                color: "#10B981",
+                fontSize: "12px",
+                fontWeight: 600,
+              }}
+            >
+              <span
+                style={{
+                  width: "7px",
+                  height: "7px",
+                  borderRadius: "50%",
+                  backgroundColor: "#10B981",
+                  boxShadow: "0 0 8px #10B981",
+                }}
+              />
+              <span>
+                {locale === "am"
+                  ? "ለ2027 የስነ-ህንፃ ስራ ልምምድ እና ውድድሮች ዝግጁ"
+                  : "Available for  Architectural Internships & Competitions"}
+              </span>
+            </div>
+          </div>
+
           <h1
             style={{
               fontSize: "clamp(var(--fs-2xl), 5vw, var(--fs-4xl))",

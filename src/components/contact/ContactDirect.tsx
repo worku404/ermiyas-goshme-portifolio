@@ -55,42 +55,65 @@ export function ContactDirect() {
         style={{
           padding: "var(--space-4) var(--space-5)",
           backgroundColor: "var(--color-surface)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           border: "var(--border-hairline)",
-          borderRadius: "var(--radius-md)",
+          borderRadius: "var(--radius-md, 12px)",
           display: "flex",
+          justifyContent: "space-between",
           alignItems: "center",
+          flexWrap: "wrap",
           gap: "var(--space-4)",
         }}
       >
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--space-4)" }}>
+          <div
+            style={{
+              width: "42px",
+              height: "42px",
+              borderRadius: "50%",
+              backgroundColor: "var(--color-surface-2)",
+              color: "var(--color-accent)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
+            }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M3 21h18M5 21V7l8-4 8 4v14M9 10a2 2 0 0 1 4 0v11" />
+            </svg>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span style={{ fontSize: "var(--fs-xs)", color: "var(--color-text-muted)" }}>
+              Academic Studio & Location
+            </span>
+            <span style={{ fontSize: "var(--fs-sm)", fontWeight: 600, color: "var(--color-text)" }}>
+              {portfolio.owner.school}
+            </span>
+            <span style={{ fontSize: "var(--fs-xs)", color: "var(--color-text-muted)" }}>
+              Addis Ababa, Ethiopia · {portfolio.owner.educationYears}
+            </span>
+          </div>
+        </div>
+
+        {/* Local Working Timezone Pill */}
         <div
           style={{
-            width: "40px",
-            height: "40px",
-            borderRadius: "50%",
-            backgroundColor: "rgba(168, 83, 42, 0.12)",
-            color: "var(--color-accent)",
-            display: "flex",
+            display: "inline-flex",
             alignItems: "center",
-            justifyContent: "center",
-            flexShrink: 0,
+            gap: "6px",
+            padding: "4px 10px",
+            borderRadius: "9999px",
+            backgroundColor: "var(--color-surface-2)",
+            border: "var(--border-hairline)",
+            fontSize: "11px",
+            fontFamily: "var(--font-mono, monospace)",
+            color: "var(--color-accent)",
           }}
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M3 21h18M5 21V7l8-4 8 4v14M9 10a2 2 0 0 1 4 0v11" />
-          </svg>
-        </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <span style={{ fontSize: "var(--fs-xs)", color: "var(--color-text-muted)" }}>
-            Academic Studio & Location
-          </span>
-          <span style={{ fontSize: "var(--fs-sm)", fontWeight: 600, color: "var(--color-text)" }}>
-            {portfolio.owner.school}
-          </span>
-          <span style={{ fontSize: "var(--fs-xs)", color: "var(--color-text-muted)" }}>
-            Addis Ababa, Ethiopia · {portfolio.owner.educationYears}
-          </span>
+          <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "var(--color-accent)" }} />
+          <span>UTC+3 · Addis Ababa</span>
         </div>
       </div>
     </div>

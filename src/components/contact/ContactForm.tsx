@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 
 export interface ContactFormProps {
   accessKey?: string;
+  embedded?: boolean;
 }
 
 interface FormValues {
@@ -24,15 +25,15 @@ interface FormErrors {
 type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
 /**
- * Accessible Web3Forms client-side contact form.
+ * Modern Accessible Web3Forms client-side contact form.
  *
- * Implements acceptance rules per docs/04-component-inventory.md:
- * - Client-side POST to https://api.web3forms.com/submit with honeypot anti-spam protection.
- * - Inline validation with aria-invalid + aria-describedby.
- * - Accessible live region (aria-live="polite") announcing errors and submission progress.
- * - Graceful mock fallback in development if NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY is empty.
+ * Implements:
+ * - Ultra-modern distraction-free architectural styling with interactive click and focus states.
+ * - Client-side POST to https://api.web3forms.com/submit with honeypot anti-spam.
+ * - Inline validation with error highlighting and aria-describedby accessibility.
+ * - Support for standalone card and embedded (split-column) layouts.
  */
-export function ContactForm({ accessKey }: ContactFormProps) {
+export function ContactForm({ accessKey, embedded = false }: ContactFormProps) {
   const t = useTranslations("contactPage");
 
   const [values, setValues] = React.useState<FormValues>({
@@ -154,13 +155,20 @@ export function ContactForm({ accessKey }: ContactFormProps) {
 
   return (
     <div
-      style={{
-        padding: "clamp(var(--space-6), 4vw, var(--space-8))",
-        backgroundColor: "var(--color-surface)",
-        border: "var(--border-hairline)",
-        borderRadius: "var(--radius-md)",
-        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
-      }}
+      style={
+        embedded
+          ? { width: "100%", boxSizing: "border-box" }
+          : {
+              padding: "clamp(var(--space-6), 4vw, var(--space-8))",
+              backgroundColor: "var(--color-surface)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              border: "var(--border-hairline)",
+              borderRadius: "var(--radius-lg, 16px)",
+              boxSizing: "border-box",
+              width: "100%",
+            }
+      }
     >
       {/* Live Region for Screen Readers */}
       <div
@@ -198,12 +206,13 @@ export function ContactForm({ accessKey }: ContactFormProps) {
               width: "56px",
               height: "56px",
               borderRadius: "50%",
-              backgroundColor: "var(--color-surface-2)",
+              backgroundColor: "rgba(168, 83, 42, 0.12)",
               color: "var(--color-accent)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: "var(--fs-2xl)",
+              border: "1px solid rgba(168, 83, 42, 0.3)",
             }}
             aria-hidden="true"
           >
@@ -213,7 +222,8 @@ export function ContactForm({ accessKey }: ContactFormProps) {
           <h3
             style={{
               fontSize: "var(--fs-xl)",
-              fontFamily: "var(--font-display), serif",
+              fontFamily: "var(--font-display), sans-serif",
+              fontWeight: 700,
               color: "var(--color-text)",
               margin: 0,
             }}
@@ -226,7 +236,7 @@ export function ContactForm({ accessKey }: ContactFormProps) {
               fontSize: "var(--fs-sm)",
               color: "var(--color-text-muted)",
               maxWidth: "45ch",
-              lineHeight: "var(--lh-body)",
+              lineHeight: 1.6,
               margin: 0,
             }}
           >
@@ -240,8 +250,9 @@ export function ContactForm({ accessKey }: ContactFormProps) {
                 color: "var(--color-accent)",
                 backgroundColor: "var(--color-surface-2)",
                 padding: "var(--space-2) var(--space-3)",
-                borderRadius: "var(--radius-sm)",
+                borderRadius: "9999px",
                 margin: 0,
+                border: "var(--border-hairline)",
               }}
             >
               {t("mockNotice")}
@@ -251,56 +262,49 @@ export function ContactForm({ accessKey }: ContactFormProps) {
           <button
             type="button"
             onClick={handleReset}
-            style={{
-              marginTop: "var(--space-4)",
-              padding: "var(--space-3) var(--space-6)",
-              backgroundColor: "var(--color-accent)",
-              color: "var(--color-on-accent)",
-              border: "none",
-              borderRadius: "var(--radius-sm)",
-              fontSize: "var(--fs-sm)",
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
+            className="modern-submit-btn"
+            style={{ marginTop: "var(--space-2)" }}
           >
-            {t("sendAnother")}
+            <span>{t("sendAnother")}</span>
           </button>
         </div>
       ) : (
         /* Form View */
-        <form onSubmit={handleSubmit} noValidate>
-          <div style={{ marginBottom: "var(--space-6)" }}>
-            <h2
-              style={{
-                fontSize: "var(--fs-xl)",
-                fontFamily: "var(--font-display), serif",
-                color: "var(--color-text)",
-                marginBottom: "var(--space-1)",
-              }}
-            >
-              {t("formHeading")}
-            </h2>
-            <p style={{ fontSize: "var(--fs-sm)", color: "var(--color-text-muted)", margin: 0 }}>
-              {t("formSubtitle")}
-            </p>
-          </div>
+        <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+          {!embedded && (
+            <div style={{ marginBottom: "var(--space-2)" }}>
+              <h2
+                style={{
+                  fontSize: "var(--fs-xl)",
+                  fontFamily: "var(--font-display), sans-serif",
+                  fontWeight: 700,
+                  color: "var(--color-text)",
+                  marginBottom: "var(--space-1)",
+                }}
+              >
+                {t("formHeading")}
+              </h2>
+              <p style={{ fontSize: "var(--fs-sm)", color: "var(--color-text-muted)", margin: 0 }}>
+                {t("formSubtitle")}
+              </p>
+            </div>
+          )}
 
           {/* Error Notice if Submission Failed */}
           {status === "error" && (
             <div
               role="alert"
               style={{
-                marginBottom: "var(--space-6)",
-                padding: "var(--space-4)",
-                backgroundColor: "var(--color-surface-2)",
-                border: "1px solid #DC2626",
+                padding: "var(--space-3) var(--space-4)",
+                backgroundColor: "rgba(220, 38, 38, 0.08)",
+                border: "1px solid rgba(220, 38, 38, 0.4)",
                 borderRadius: "var(--radius-sm)",
                 display: "flex",
                 gap: "var(--space-3)",
                 alignItems: "flex-start",
               }}
             >
-              <span style={{ color: "#DC2626", fontSize: "var(--fs-lg)" }} aria-hidden="true">
+              <span style={{ color: "#DC2626", fontSize: "var(--fs-base)" }} aria-hidden="true">
                 ⚠️
               </span>
               <div>
@@ -326,233 +330,203 @@ export function ContactForm({ accessKey }: ContactFormProps) {
             aria-hidden="true"
           />
 
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "var(--space-5)",
-            }}
-          >
-            {/* Name Input */}
-            <div>
-              <label
-                htmlFor="contact-name"
-                style={{
-                  display: "block",
-                  fontSize: "var(--fs-sm)",
-                  fontWeight: 600,
-                  color: "var(--color-text)",
-                  marginBottom: "var(--space-2)",
-                }}
-              >
-                {t("nameLabel")} <span style={{ color: "var(--color-accent)" }}>*</span>
-              </label>
-              <input
-                ref={nameInputRef}
-                id="contact-name"
-                name="name"
-                type="text"
-                required
-                aria-required="true"
-                aria-invalid={errors.name ? "true" : "false"}
-                aria-describedby={errors.name ? "name-error" : undefined}
-                value={values.name}
-                onChange={(e) => {
-                  setValues({ ...values, name: e.target.value });
-                  if (errors.name) setErrors({ ...errors, name: undefined });
-                }}
-                placeholder={t("namePlaceholder")}
-                style={{
-                  width: "100%",
-                  padding: "var(--space-3) var(--space-4)",
-                  backgroundColor: "var(--color-surface-2)",
-                  border: errors.name ? "1px solid #DC2626" : "var(--border-hairline)",
-                  borderRadius: "var(--radius-sm)",
-                  color: "var(--color-text)",
-                  fontSize: "var(--fs-sm)",
-                  outline: "none",
-                }}
-              />
-              {errors.name && (
-                <p id="name-error" style={{ color: "#DC2626", fontSize: "var(--fs-xs)", marginTop: "var(--space-1)", margin: "var(--space-1) 0 0" }}>
-                  {errors.name}
-                </p>
-              )}
-            </div>
+          {/* Name Input */}
+          <div className="modern-field-group">
+            <label htmlFor="contact-name" className="modern-field-label">
+              <span>{t("nameLabel")}</span>
+              <span style={{ color: "var(--color-accent)", fontSize: "12px" }}>*</span>
+            </label>
+            <input
+              ref={nameInputRef}
+              id="contact-name"
+              name="name"
+              type="text"
+              required
+              aria-required="true"
+              aria-invalid={errors.name ? "true" : "false"}
+              aria-describedby={errors.name ? "name-error" : undefined}
+              value={values.name}
+              onChange={(e) => {
+                setValues({ ...values, name: e.target.value });
+                if (errors.name) setErrors({ ...errors, name: undefined });
+              }}
+              placeholder={t("namePlaceholder")}
+              className={`modern-input ${errors.name ? "is-error" : ""}`}
+            />
+            {errors.name && (
+              <p id="name-error" style={{ color: "#DC2626", fontSize: "var(--fs-xs)", margin: "2px 0 0" }}>
+                {errors.name}
+              </p>
+            )}
+          </div>
 
-            {/* Email Input */}
-            <div>
-              <label
-                htmlFor="contact-email"
-                style={{
-                  display: "block",
-                  fontSize: "var(--fs-sm)",
-                  fontWeight: 600,
-                  color: "var(--color-text)",
-                  marginBottom: "var(--space-2)",
-                }}
-              >
-                {t("emailLabel")} <span style={{ color: "var(--color-accent)" }}>*</span>
-              </label>
-              <input
-                ref={emailInputRef}
-                id="contact-email"
-                name="email"
-                type="email"
-                required
-                aria-required="true"
-                aria-invalid={errors.email ? "true" : "false"}
-                aria-describedby={errors.email ? "email-error" : undefined}
-                value={values.email}
-                onChange={(e) => {
-                  setValues({ ...values, email: e.target.value });
-                  if (errors.email) setErrors({ ...errors, email: undefined });
-                }}
-                placeholder={t("emailPlaceholder")}
-                style={{
-                  width: "100%",
-                  padding: "var(--space-3) var(--space-4)",
-                  backgroundColor: "var(--color-surface-2)",
-                  border: errors.email ? "1px solid #DC2626" : "var(--border-hairline)",
-                  borderRadius: "var(--radius-sm)",
-                  color: "var(--color-text)",
-                  fontSize: "var(--fs-sm)",
-                  outline: "none",
-                }}
-              />
-              {errors.email && (
-                <p id="email-error" style={{ color: "#DC2626", fontSize: "var(--fs-xs)", margin: "var(--space-1) 0 0" }}>
-                  {errors.email}
-                </p>
-              )}
-            </div>
+          {/* Email Input */}
+          <div className="modern-field-group">
+            <label htmlFor="contact-email" className="modern-field-label">
+              <span>{t("emailLabel")}</span>
+              <span style={{ color: "var(--color-accent)", fontSize: "12px" }}>*</span>
+            </label>
+            <input
+              ref={emailInputRef}
+              id="contact-email"
+              name="email"
+              type="email"
+              required
+              aria-required="true"
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-describedby={errors.email ? "email-error" : undefined}
+              value={values.email}
+              onChange={(e) => {
+                setValues({ ...values, email: e.target.value });
+                if (errors.email) setErrors({ ...errors, email: undefined });
+              }}
+              placeholder={t("emailPlaceholder")}
+              className={`modern-input ${errors.email ? "is-error" : ""}`}
+            />
+            {errors.email && (
+              <p id="email-error" style={{ color: "#DC2626", fontSize: "var(--fs-xs)", margin: "2px 0 0" }}>
+                {errors.email}
+              </p>
+            )}
+          </div>
 
-            {/* Subject Input */}
-            <div>
-              <label
-                htmlFor="contact-subject"
-                style={{
-                  display: "block",
-                  fontSize: "var(--fs-sm)",
-                  fontWeight: 600,
-                  color: "var(--color-text)",
-                  marginBottom: "var(--space-2)",
-                }}
-              >
-                {t("subjectLabel")}
-              </label>
-              <input
-                id="contact-subject"
-                name="subject"
-                type="text"
-                value={values.subject}
-                onChange={(e) => setValues({ ...values, subject: e.target.value })}
-                placeholder={t("subjectPlaceholder")}
-                style={{
-                  width: "100%",
-                  padding: "var(--space-3) var(--space-4)",
-                  backgroundColor: "var(--color-surface-2)",
-                  border: "var(--border-hairline)",
-                  borderRadius: "var(--radius-sm)",
-                  color: "var(--color-text)",
-                  fontSize: "var(--fs-sm)",
-                  outline: "none",
-                }}
-              />
+          {/* Quick-Select Inquiry Chips */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+            <span
+              style={{
+                fontSize: "11px",
+                color: "var(--color-text-muted)",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+              }}
+            >
+              Quick Select Topic
+            </span>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+              {[
+                "Architectural Internship",
+                "Competition Collaboration",
+                "3D Visualization / Rendering",
+                "Academic Inquiry",
+              ].map((topic) => {
+                const isSelected = values.subject === topic;
+                return (
+                  <button
+                    key={topic}
+                    type="button"
+                    onClick={() =>
+                      setValues((prev) => ({
+                        ...prev,
+                        subject: isSelected ? "" : topic,
+                      }))
+                    }
+                    style={{
+                      padding: "5px 12px",
+                      borderRadius: "9999px",
+                      fontSize: "11px",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      border: isSelected
+                        ? "1px solid var(--color-accent)"
+                        : "var(--border-hairline)",
+                      backgroundColor: isSelected
+                        ? "var(--color-surface-2)"
+                        : "transparent",
+                      color: isSelected ? "var(--color-accent)" : "var(--color-text)",
+                      transition: "all var(--dur-fast) var(--ease-standard)",
+                    }}
+                  >
+                    {isSelected ? "✓ " : "+ "}
+                    {topic}
+                  </button>
+                );
+              })}
             </div>
+          </div>
 
-            {/* Message Textarea */}
-            <div>
-              <label
-                htmlFor="contact-message"
-                style={{
-                  display: "block",
-                  fontSize: "var(--fs-sm)",
-                  fontWeight: 600,
-                  color: "var(--color-text)",
-                  marginBottom: "var(--space-2)",
-                }}
-              >
-                {t("messageLabel")} <span style={{ color: "var(--color-accent)" }}>*</span>
-              </label>
-              <textarea
-                ref={messageInputRef}
-                id="contact-message"
-                name="message"
-                required
-                aria-required="true"
-                rows={5}
-                aria-invalid={errors.message ? "true" : "false"}
-                aria-describedby={errors.message ? "message-error" : undefined}
-                value={values.message}
-                onChange={(e) => {
-                  setValues({ ...values, message: e.target.value });
-                  if (errors.message) setErrors({ ...errors, message: undefined });
-                }}
-                placeholder={t("messagePlaceholder")}
-                style={{
-                  width: "100%",
-                  padding: "var(--space-3) var(--space-4)",
-                  backgroundColor: "var(--color-surface-2)",
-                  border: errors.message ? "1px solid #DC2626" : "var(--border-hairline)",
-                  borderRadius: "var(--radius-sm)",
-                  color: "var(--color-text)",
-                  fontSize: "var(--fs-sm)",
-                  fontFamily: "inherit",
-                  outline: "none",
-                  resize: "vertical",
-                }}
-              />
-              {errors.message && (
-                <p id="message-error" style={{ color: "#DC2626", fontSize: "var(--fs-xs)", margin: "var(--space-1) 0 0" }}>
-                  {errors.message}
-                </p>
-              )}
-            </div>
+          {/* Subject Input */}
+          <div className="modern-field-group">
+            <label htmlFor="contact-subject" className="modern-field-label">
+              <span>{t("subjectLabel")}</span>
+            </label>
+            <input
+              id="contact-subject"
+              name="subject"
+              type="text"
+              value={values.subject}
+              onChange={(e) => setValues({ ...values, subject: e.target.value })}
+              placeholder={t("subjectPlaceholder")}
+              className="modern-input"
+            />
+          </div>
 
-            {/* Submit Button */}
-            <div>
-              <button
-                type="submit"
-                disabled={status === "submitting"}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "var(--space-2)",
-                  padding: "var(--space-3) var(--space-8)",
-                  backgroundColor: "var(--color-accent)",
-                  color: "var(--color-on-accent)",
-                  border: "none",
-                  borderRadius: "var(--radius-sm)",
-                  fontSize: "var(--fs-sm)",
-                  fontWeight: 600,
-                  cursor: status === "submitting" ? "not-allowed" : "pointer",
-                  opacity: status === "submitting" ? 0.8 : 1,
-                  transition: "opacity var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard)",
-                }}
-              >
-                {status === "submitting" ? (
-                  <>
-                    <span
-                      style={{
-                        display: "inline-block",
-                        width: "14px",
-                        height: "14px",
-                        border: "2px solid currentColor",
-                        borderRightColor: "transparent",
-                        borderRadius: "50%",
-                        animation: "spin 0.8s linear infinite",
-                      }}
-                      aria-hidden="true"
-                    />
-                    <span>{t("submitting")}</span>
-                  </>
-                ) : (
+          {/* Message Textarea */}
+          <div className="modern-field-group">
+            <label htmlFor="contact-message" className="modern-field-label">
+              <span>{t("messageLabel")}</span>
+              <span style={{ color: "var(--color-accent)", fontSize: "12px" }}>*</span>
+            </label>
+            <textarea
+              ref={messageInputRef}
+              id="contact-message"
+              name="message"
+              required
+              aria-required="true"
+              rows={4}
+              aria-invalid={errors.message ? "true" : "false"}
+              aria-describedby={errors.message ? "message-error" : undefined}
+              value={values.message}
+              onChange={(e) => {
+                setValues({ ...values, message: e.target.value });
+                if (errors.message) setErrors({ ...errors, message: undefined });
+              }}
+              placeholder={t("messagePlaceholder")}
+              className={`modern-textarea ${errors.message ? "is-error" : ""}`}
+              style={{ resize: "vertical", minHeight: "120px" }}
+            />
+            {errors.message && (
+              <p id="message-error" style={{ color: "#DC2626", fontSize: "var(--fs-xs)", margin: "2px 0 0" }}>
+                {errors.message}
+              </p>
+            )}
+          </div>
+
+          {/* Submit Button */}
+          <div style={{ marginTop: "var(--space-4)" }}>
+            <button
+              type="submit"
+              disabled={status === "submitting"}
+              className="modern-submit-btn"
+            >
+              {status === "submitting" ? (
+                <>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      width: "13px",
+                      height: "13px",
+                      border: "2px solid currentColor",
+                      borderRightColor: "transparent",
+                      borderRadius: "50%",
+                      animation: "spin 0.8s linear infinite",
+                    }}
+                    aria-hidden="true"
+                  />
+                  <span>{t("submitting")}</span>
+                </>
+              ) : (
+                <>
                   <span>{t("submit")}</span>
-                )}
-              </button>
-            </div>
+                  <span className="send-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="22" y1="2" x2="11" y2="13" />
+                      <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                  </span>
+                </>
+              )}
+            </button>
           </div>
         </form>
       )}

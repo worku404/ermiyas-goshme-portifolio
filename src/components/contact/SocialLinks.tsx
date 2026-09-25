@@ -159,86 +159,177 @@ export function SocialLinks({
     );
   }
 
-  // Large prominent action buttons (used in /contact page)
+  // Structured action cards (used in /contact page)
+  const directItems = items.filter((item) => ["phone", "email"].includes(item.id));
+  const socialItems = items.filter((item) => ["telegram", "linkedin", "x"].includes(item.id));
+
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
-        gap: "var(--space-3)",
-      }}
-    >
-      {items.map((item) => (
-        <a
-          key={item.id}
-          href={item.href}
-          target={item.isExternal ? "_blank" : undefined}
-          rel={item.isExternal ? "noopener noreferrer" : undefined}
-          aria-label={`${item.name}: ${item.label}`}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "var(--space-3)",
-            padding: "var(--space-4) var(--space-5)",
-            backgroundColor: "var(--color-surface)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            border: "var(--border-hairline)",
-            borderRadius: "var(--radius-md)",
-            textDecoration: "none",
-            color: "inherit",
-            transition:
-              "all var(--dur-fast) var(--ease-standard)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "var(--color-accent)";
-            e.currentTarget.style.transform = "translateY(-2px)";
-            e.currentTarget.style.boxShadow = "var(--shadow-md)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "var(--border-hairline)";
-            e.currentTarget.style.transform = "none";
-            e.currentTarget.style.boxShadow = "none";
-          }}
-        >
-          <div
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
+      {/* Primary Direct Contact (Phone & Email) */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
+          gap: "var(--space-3)",
+        }}
+      >
+        {directItems.map((item) => (
+          <a
+            key={item.id}
+            href={item.href}
+            target={item.isExternal ? "_blank" : undefined}
+            rel={item.isExternal ? "noopener noreferrer" : undefined}
+            aria-label={`${item.name}: ${item.label}`}
             style={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "50%",
-              backgroundColor: "rgba(168, 83, 42, 0.12)",
-              color: "var(--color-accent)",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
+              gap: "var(--space-3)",
+              padding: "var(--space-4)",
+              backgroundColor: "var(--color-surface)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              border: "var(--border-hairline)",
+              borderRadius: "var(--radius-md, 12px)",
+              textDecoration: "none",
+              color: "inherit",
+              transition: "all var(--dur-fast) var(--ease-standard)",
+              minWidth: 0,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--color-accent)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "var(--shadow-md)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--color-border)";
+              e.currentTarget.style.transform = "none";
+              e.currentTarget.style.boxShadow = "none";
             }}
           >
-            {item.icon}
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "2px", flexGrow: 1 }}>
-            <span style={{ fontSize: "var(--fs-xs)", color: "var(--color-text-muted)" }}>
-              {item.name}
-            </span>
-            <span
+            <div
               style={{
-                fontFamily: "var(--font-display), serif",
-                fontSize: "var(--fs-base)",
-                fontWeight: 600,
-                color: "var(--color-text)",
-                lineHeight: 1.2,
-                wordBreak: "break-all",
+                width: "42px",
+                height: "42px",
+                borderRadius: "50%",
+                backgroundColor: "var(--color-surface-2)",
+                color: "var(--color-accent)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
               }}
             >
-              {item.label}
-            </span>
-            <span style={{ fontSize: "11px", color: "var(--color-accent)", fontWeight: 600 }}>
-              {item.handle} {item.isExternal ? "↗" : "→"}
-            </span>
-          </div>
-        </a>
-      ))}
+              {item.icon}
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "2px", flexGrow: 1, minWidth: 0 }}>
+              <span style={{ fontSize: "var(--fs-xs)", color: "var(--color-text-muted)" }}>
+                {item.name}
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-sans), sans-serif",
+                  fontSize: item.id === "email" ? "clamp(12px, 1.1vw, 14px)" : "var(--fs-base)",
+                  fontWeight: 600,
+                  color: "var(--color-text)",
+                  lineHeight: 1.2,
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+                title={item.label}
+              >
+                {item.label}
+              </span>
+              <span style={{ fontSize: "11px", color: "var(--color-accent)", fontWeight: 600 }}>
+                {item.handle} {item.isExternal ? "↗" : "→"}
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* Social Platforms Row: Telegram, LinkedIn, X side-by-side with no empty gap */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))",
+          gap: "var(--space-3)",
+        }}
+      >
+        {socialItems.map((item) => (
+          <a
+            key={item.id}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${item.name}: ${item.label}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "var(--space-2)",
+              padding: "var(--space-3) var(--space-4)",
+              backgroundColor: "var(--color-surface)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              border: "var(--border-hairline)",
+              borderRadius: "var(--radius-md, 12px)",
+              textDecoration: "none",
+              color: "inherit",
+              transition: "all var(--dur-fast) var(--ease-standard)",
+              minWidth: 0,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--color-accent)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "var(--shadow-md)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--color-border)";
+              e.currentTarget.style.transform = "none";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <div
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  borderRadius: "50%",
+                  backgroundColor: "var(--color-surface-2)",
+                  color: item.color === "currentColor" ? "var(--color-text)" : item.color,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                {item.icon}
+              </div>
+              <span style={{ fontSize: "11px", color: "var(--color-accent)", fontWeight: 600 }}>
+                ↗
+              </span>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
+              <span style={{ fontSize: "12px", fontWeight: 600, color: "var(--color-text)" }}>
+                {item.name}
+              </span>
+              <span
+                style={{
+                  fontSize: "11px",
+                  color: "var(--color-text-muted)",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {item.handle}
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
