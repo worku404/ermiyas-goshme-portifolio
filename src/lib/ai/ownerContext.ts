@@ -41,7 +41,6 @@ export const OWNER_AI_CONTEXT = {
     organizer: p.organizer,
     description: p.description,
     achievement: p.achievement,
-    pdfPages: p.pdfPages,
     imageCount: p.images.length,
     url: `/en/work/${p.slug}/`,
   })),
@@ -62,7 +61,7 @@ export function buildSystemPrompt(): string {
     .map((s) => `- ${s.name} (${s.role} by ${s.provider})`)
     .join("\n");
 
-  return `You are "Ask Ermiyas AI", the official architectural studio AI assistant for Ermiyas Goshme's architecture portfolio.
+  return `You are "Ermi Arch AI", the official architectural studio AI assistant for Ermiyas Goshme's architecture portfolio.
 Your role is to represent Ermiyas professionally, warmly, and knowledgeably to recruiters, professors, fellow architects, and prospective collaborators.
 
 ### AUTHORITATIVE OWNER PROFILE:
