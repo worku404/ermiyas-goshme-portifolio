@@ -5,12 +5,19 @@ import { setRequestLocale, getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import dynamic from "next/dynamic";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { PortfolioAssistant } from "@/components/ai/PortfolioAssistant";
 import { ArchitecturalBackground } from "@/components/background/ArchitecturalBackground";
 import portfolio from "@/../content/portfolio.json";
 import "@/app/globals.css";
+
+const PortfolioAssistant = dynamic(
+  () =>
+    import("@/components/ai/PortfolioAssistant").then(
+      (mod) => mod.PortfolioAssistant
+    )
+);
 
 /**
  * Self-hosted architectural typography via next/font/local:

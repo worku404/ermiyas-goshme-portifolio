@@ -32,7 +32,7 @@ export function KineticProjectReel() {
           observer.disconnect();
         }
       },
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.01, rootMargin: "200px 0px" }
     );
 
     if (sectionRef.current) {
@@ -145,7 +145,8 @@ export function KineticProjectReel() {
             gap: "clamp(var(--space-5), 2.5vw, var(--space-8))",
             width: "max-content",
             animation: "kineticReel 48s linear infinite",
-            willChange: "transform",
+            animationPlayState: isVisible ? "running" : "paused",
+            willChange: isVisible ? "transform" : "auto",
             padding: "0 clamp(var(--space-6), 4vw, var(--space-12))",
           }}
         >

@@ -1,5 +1,4 @@
 import * as React from "react";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CVDownloadButton } from "@/components/cv/CVDownloadButton";
@@ -150,22 +149,32 @@ export function Hero() {
             width: "100%",
           }}
         >
-          <Image
-            src={heroImageSrc}
-            alt={`${portfolio.owner.name} — ${portfolio.owner.statusLine} at ${portfolio.owner.school}`}
-            priority={true}
-            fetchPriority="high"
-            width={800}
-            height={800}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center 22%",
-              display: "block",
-            }}
-          />
+          <picture>
+            <source
+              media="(max-width: 640px)"
+              srcSet="/images/owner/ermiyas-goshme-hero-480.webp"
+              type="image/webp"
+            />
+            <source
+              srcSet="/images/owner/ermiyas-goshme-hero.webp"
+              type="image/webp"
+            />
+            <img
+              src="/images/owner/ermiyas-goshme-hero.webp"
+              alt={`${portfolio.owner.name} — ${portfolio.owner.statusLine} at ${portfolio.owner.school}`}
+              fetchPriority="high"
+              width={800}
+              height={800}
+              decoding="async"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center 22%",
+                display: "block",
+              }}
+            />
+          </picture>
           <div
             style={{
               position: "absolute",

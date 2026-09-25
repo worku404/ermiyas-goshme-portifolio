@@ -88,7 +88,7 @@ export function LocaleSwitcher({
           cursor: "pointer",
           padding: "2px 0",
           fontSize: "12px",
-          fontFamily: "var(--font-am), sans-serif",
+          fontFamily: locale === "am" ? "var(--font-am), sans-serif" : "system-ui, sans-serif",
           transition: "color var(--dur-fast) var(--ease-standard)",
         }}
       >
