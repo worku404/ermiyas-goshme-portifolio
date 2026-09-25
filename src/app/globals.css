@@ -10,11 +10,6 @@
   --color-surface: rgba(255, 255, 255, 0.78); /* translucent raised card */
   --color-surface-2: rgba(236, 232, 224, 0.82); /* translucent concrete */
 
-  /* Ambient Video Background Tokens */
-  --bg-video-opacity: 0.28;
-  --bg-video-filter: contrast(1.1) brightness(0.95);
-  --bg-video-blend: normal;
-
   /* Text (ink) */
   --color-text: #1a1815; /* primary ink (~14.9:1 on bg) */
   --color-text-muted: #5c574f; /* secondary ink (~6.7:1 on bg) */
@@ -85,11 +80,6 @@
   --color-bg: #14120f; /* dark ink */
   --color-surface: rgba(30, 27, 23, 0.78);
   --color-surface-2: rgba(38, 34, 25, 0.82);
-
-  /* Ambient Video Background Tokens */
-  --bg-video-opacity: 0.35;
-  --bg-video-filter: none;
-  --bg-video-blend: screen;
 
   /* Text */
   --color-text: #f2eee6; /* paper on dark (~15.6:1 on bg) */

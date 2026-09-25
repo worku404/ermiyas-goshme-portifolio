@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PortfolioAssistant } from "@/components/ai/PortfolioAssistant";
+import { ArchitecturalBackground } from "@/components/background/ArchitecturalBackground";
 import portfolio from "@/../content/portfolio.json";
 import "@/app/globals.css";
 
@@ -179,6 +180,7 @@ export default async function LocaleLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
+            <ArchitecturalBackground />
             <SiteHeader />
             <main
               style={{

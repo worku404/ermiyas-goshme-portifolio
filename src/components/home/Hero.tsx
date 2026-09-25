@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CVDownloadButton } from "@/components/cv/CVDownloadButton";
-import { BackgroundVideo } from "@/components/background/BackgroundVideo";
 import { Container } from "@/components/layout/Container";
 import portfolio from "@/../content/portfolio.json";
 
@@ -34,12 +33,8 @@ export function Hero() {
         paddingBottom: "var(--space-8)",
         boxSizing: "border-box",
         position: "relative",
-        overflow: "hidden", // Restricts video background strictly to Hero
       }}
     >
-      {/* Hero-Scoped Background Video */}
-      <BackgroundVideo />
-
       {/* Hero Content aligned to layout Container */}
       <Container size="wide" style={{ position: "relative", zIndex: 10 }}>
         <div
