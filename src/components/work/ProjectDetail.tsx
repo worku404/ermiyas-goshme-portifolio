@@ -42,7 +42,6 @@ export function ProjectDetail({
   locale,
 }: ProjectDetailProps) {
   const t = useTranslations("project");
-  const isNeedsReview = project.slug === "breathable-clay-wall-system";
 
   return (
     <article
@@ -53,9 +52,6 @@ export function ProjectDetail({
     >
       {/* Breadcrumb Hierarchy */}
       <Breadcrumbs projectTitle={project.fullTitle} />
-
-      {/* Needs Review Alert Banner for Project 10 */}
-      {isNeedsReview && <NeedsReviewBanner />}
 
       {/* Project Header Header Block */}
       <header style={{ marginBottom: "var(--space-8)" }}>

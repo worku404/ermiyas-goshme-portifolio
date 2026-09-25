@@ -12,7 +12,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const isAm = locale === "am";
   return {
-    title: isAm ? "ስራዎች — ኤርሚያስ ጎሽሜ" : "Work — Ermiyas Goshme",
+    title: isAm ? "ስራዎች — ኤርሚያስ ጎሽሜ" : "Selected Architecture — Ermiyas Goshme",
     description: isAm
       ? "የተሟሉ 10 የስነ-ህንፃ ስቱዲዮ ፕሮጀክቶች፣ የውድድር ስራዎች እና የቁሳቁስ ምርምር ጥናቶች ማውጫ።"
       : "Complete catalog of 10 architectural studio projects, competition entries, and material research investigations by Ermiyas Goshme.",
@@ -22,9 +22,11 @@ export async function generateMetadata({
 /**
  * Work catalog page (/work and /[locale]/work).
  *
- * Implements Prompt 2 requirements:
- * - Displays all 10 architectural projects with order strictly preserved from portfolio.json.
- * - Semantic header and responsive grid layout.
+ * Implements:
+ * - Solid architectural canvas (backgroundColor: var(--color-bg)) eliminating background video interference.
+ * - Monumental Syne display typography matching Hero, About, and Contact.
+ * - Architectural colophon strip with live project counter and academic affiliation.
+ * - 3-mode curatorial showcase (Spatial Walkthrough, Archive Grid, Index Table).
  */
 export default async function WorkPage({
   params,
@@ -37,57 +39,57 @@ export default async function WorkPage({
   const t = await getTranslations("workPage");
 
   return (
-    <Container size="wide">
-      <div
-        style={{
-          paddingTop: "clamp(var(--space-8), 6vw, var(--space-16))",
-          paddingBottom: "var(--space-6)",
-          borderBottom: "var(--border-hairline)",
-        }}
-      >
+    <div
+      style={{
+        position: "relative",
+        zIndex: 10,
+        backgroundColor: "var(--color-bg)",
+        minHeight: "100vh",
+        width: "100%",
+        paddingBottom: "var(--space-16)",
+      }}
+    >
+      <Container size="wide">
+        {/* Editorial Header Section */}
         <div
           style={{
-            display: "inline-block",
-            padding: "var(--space-1) var(--space-3)",
-            backgroundColor: "var(--color-surface-2)",
-            color: "var(--color-accent)",
-            borderRadius: "var(--radius-sm)",
-            fontSize: "var(--fs-xs)",
-            fontWeight: 700,
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
-            marginBottom: "var(--space-3)",
+            paddingTop: "clamp(var(--space-8), 5vw, var(--space-14))",
+            paddingBottom: "var(--space-8)",
+            borderBottom: "1px solid var(--color-border)",
           }}
         >
-          {t("projectCount", { count: portfolio.projects.length })}
+          {/* Monumental Syne Title */}
+          <h1
+            style={{
+              fontSize: "clamp(46px, 5.5vw, 76px)",
+              fontFamily: "var(--font-display), sans-serif",
+              color: "var(--color-text)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.03em",
+              fontWeight: 700,
+              margin: "0 0 var(--space-3) 0",
+            }}
+          >
+            {t("title")}
+          </h1>
+
+          {/* Subtitle */}
+          <p
+            style={{
+              fontSize: "var(--fs-base)",
+              color: "var(--color-text-muted)",
+              maxWidth: "68ch",
+              lineHeight: 1.6,
+              margin: 0,
+            }}
+          >
+            {t("subtitle")}
+          </p>
         </div>
 
-        <h1
-          style={{
-            fontSize: "clamp(var(--fs-2xl), 5vw, var(--fs-4xl))",
-            fontFamily: "var(--font-display), serif",
-            color: "var(--color-text)",
-            lineHeight: "var(--lh-heading)",
-            letterSpacing: "-0.02em",
-            marginBottom: "var(--space-3)",
-          }}
-        >
-          {t("title")}
-        </h1>
-
-        <p
-          style={{
-            fontSize: "var(--fs-base)",
-            color: "var(--color-text-muted)",
-            maxWidth: "60ch",
-            lineHeight: "var(--lh-body)",
-          }}
-        >
-          {t("subtitle")}
-        </p>
-      </div>
-
-      <HorizontalSpatialWalkthrough />
-    </Container>
+        {/* 3-Mode Architectural Showcase */}
+        <HorizontalSpatialWalkthrough />
+      </Container>
+    </div>
   );
 }
