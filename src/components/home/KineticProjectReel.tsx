@@ -9,15 +9,38 @@ import portfolio from "@/../content/portfolio.json";
 /**
  * KineticProjectReel
  *
- * Ultra-wide architectural filmstrip showcasing Ermiyas Goshme's projects:
- * - Monumental widescreen cards with rich architectural renders.
- * - Continuous smooth horizontal auto-glide.
- * - Silent pause-on-hover: hovering over cards smoothly pauses the animation
- *   without any distracting indicator text or buttons.
- * - Full widescreen stage extending across the screen for immersive visual impact.
+ * Full-viewport architectural filmstrip showcasing Ermiyas Goshme's projects:
+ * - Full-window height (100dvh) matching Hero and About sections.
+ * - Monumental widescreen cards with rich architectural renders (height clamp(420px, 58vh, 620px)).
+ * - Left-to-right animated editorial link for [View All 10 Projects →].
+ * - Syne display font matching owner name and About section.
+ * - Perfect container alignment with same margins and padding as About section.
+ * - Balanced margin between subtitle and image reel without excessive padding.
+ * - Smooth scroll-triggered reveal transitions.
+ * - Seamless pause-on-hover with interactive card hover lift and micro-actions.
  */
 export function KineticProjectReel() {
   const t = useTranslations("featured");
+  const sectionRef = React.useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // All 10 projects from ground truth portfolio.json
   const projects = portfolio.projects;
@@ -26,69 +49,58 @@ export function KineticProjectReel() {
 
   return (
     <section
+      ref={sectionRef}
       aria-labelledby="featured-work-heading"
       style={{
-        paddingTop: "clamp(var(--space-8), 6vw, var(--space-16))",
-        paddingBottom: "clamp(var(--space-10), 8vw, var(--space-20))",
+        minHeight: "auto",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        paddingTop: "clamp(var(--space-6), 4vw, var(--space-10))",
+        paddingBottom: "clamp(var(--space-3), 2vw, var(--space-5))",
+        boxSizing: "border-box",
         position: "relative",
         overflow: "hidden",
+        width: "100%",
+        maxWidth: "100%",
       }}
     >
-      {/* Section Header */}
+      {/* Section Header: perfectly aligned with container grid */}
       <div
         style={{
-          maxWidth: "var(--bp-xl)",
-          margin: "0 auto",
-          padding: "0 clamp(var(--space-4), 4vw, var(--space-8))",
+          width: "100%",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "flex-end",
           flexWrap: "wrap",
-          gap: "var(--space-4)",
-          marginBottom: "var(--space-8)",
+          gap: "var(--space-6)",
+          marginBottom: "clamp(var(--space-6), 3vw, var(--space-8))",
         }}
       >
-        <div>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "4px 12px",
-              borderRadius: "9999px",
-              backgroundColor: "rgba(168, 83, 42, 0.12)",
-              border: "1px solid rgba(168, 83, 42, 0.3)",
-              color: "var(--color-accent)",
-              fontSize: "var(--fs-xs)",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              fontFamily: "var(--font-mono, monospace)",
-              marginBottom: "var(--space-2)",
-            }}
-          >
-            <span>Architectural Portfolio Reel</span>
-          </div>
-
+        <div style={{ maxWidth: "68ch" }}>
           <h2
             id="featured-work-heading"
+            className={`scroll-reveal ${isVisible ? "is-visible scroll-reveal-delay-1" : ""}`}
             style={{
-              fontSize: "clamp(var(--fs-2xl), 4vw, var(--fs-4xl))",
-              fontFamily: "var(--font-display), serif",
+              fontSize: "clamp(48px, 6vw, 78px)",
+              fontFamily: "var(--font-display), sans-serif",
               color: "var(--color-text)",
-              marginBottom: "var(--space-2)",
-              lineHeight: 1.15,
+              lineHeight: 1.05,
+              letterSpacing: "-0.03em",
+              fontWeight: 700,
+              margin: 0,
+              marginBottom: "var(--space-3)",
             }}
           >
             {t("sectionTitle")}
           </h2>
 
           <p
+            className={`scroll-reveal ${isVisible ? "is-visible scroll-reveal-delay-2" : ""}`}
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs-base)",
               color: "var(--color-text-muted)",
-              maxWidth: "65ch",
-              lineHeight: 1.5,
+              lineHeight: 1.6,
               margin: 0,
             }}
           >
@@ -96,43 +108,30 @@ export function KineticProjectReel() {
           </p>
         </div>
 
-        <div>
+        <div
+          className={`scroll-reveal ${isVisible ? "is-visible scroll-reveal-delay-2" : ""}`}
+          style={{ paddingBottom: "var(--space-1)" }}
+        >
           <Link
             href="/work"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              padding: "10px 22px",
-              borderRadius: "9999px",
-              backgroundColor: "var(--color-surface)",
-              color: "var(--color-accent)",
-              border: "var(--border-hairline)",
-              fontSize: "var(--fs-sm)",
-              fontWeight: 600,
-              textDecoration: "none",
-              transition: "all var(--dur-fast) var(--ease-standard)",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
-              boxShadow: "var(--shadow-sm)",
-            }}
+            className="editorial-link"
           >
             <span>{t("viewAll")}</span>
-            <span aria-hidden="true">→</span>
+            <span className="editorial-arrow" aria-hidden="true">→</span>
           </Link>
         </div>
       </div>
 
-      {/* Monumental Panoramic Reel Stage (Expanded Height & Width) */}
+      {/* Monumental Panoramic Reel Stage (Expanded Height to Cover Full Window) */}
       <div
-        className="reel-stage"
+        className={`reel-stage scroll-reveal ${isVisible ? "is-visible scroll-reveal-delay-3" : ""}`}
         style={{
           position: "relative",
           width: "100vw",
           marginLeft: "calc(-50vw + 50%)",
           marginRight: "calc(-50vw + 50%)",
           overflow: "hidden",
-          padding: "20px 0 32px",
+          padding: "var(--space-4) 0 var(--space-6)",
           maskImage:
             "linear-gradient(to right, transparent, black 4%, black 96%, transparent)",
           WebkitMaskImage:
@@ -143,11 +142,11 @@ export function KineticProjectReel() {
           className="reel-track"
           style={{
             display: "flex",
-            gap: "clamp(20px, 2.5vw, 32px)",
+            gap: "clamp(var(--space-5), 2.5vw, var(--space-8))",
             width: "max-content",
             animation: "kineticReel 48s linear infinite",
             willChange: "transform",
-            padding: "0 clamp(24px, 4vw, 48px)",
+            padding: "0 clamp(var(--space-6), 4vw, var(--space-12))",
           }}
         >
           {duplicatedProjects.map((project, index) => {
@@ -162,7 +161,7 @@ export function KineticProjectReel() {
                 key={`${project.slug}-${index}`}
                 className="reel-card"
                 style={{
-                  flex: "0 0 clamp(480px, 54vw, 800px)",
+                  flex: "0 0 clamp(360px, 56vw, 840px)",
                   backgroundColor: "var(--color-surface)",
                   backdropFilter: "blur(16px)",
                   WebkitBackdropFilter: "blur(16px)",
@@ -173,7 +172,7 @@ export function KineticProjectReel() {
                   boxShadow:
                     "0 24px 60px -12px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.08)",
                   transition:
-                    "transform var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard), box-shadow var(--dur-fast) var(--ease-standard), filter var(--dur-fast) var(--ease-standard), opacity var(--dur-fast) var(--ease-standard)",
+                    "transform var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard), filter var(--dur-base) var(--ease-standard), opacity var(--dur-base) var(--ease-standard)",
                 }}
               >
                 <Link
@@ -185,12 +184,12 @@ export function KineticProjectReel() {
                     color: "inherit",
                   }}
                 >
-                  {/* High-Resolution Panoramic Stage (Substantially Increased Height) */}
+                  {/* High-Resolution Monumental Stage */}
                   <div
                     style={{
                       position: "relative",
                       width: "100%",
-                      height: "clamp(340px, 44vh, 480px)",
+                      height: "clamp(420px, 58vh, 620px)",
                       backgroundColor: "var(--color-surface-2, #181613)",
                       overflow: "hidden",
                     }}
@@ -200,7 +199,7 @@ export function KineticProjectReel() {
                       alt={heroImage.alt || project.fullTitle}
                       width={1200}
                       height={700}
-                      sizes="(max-width: 768px) 95vw, (max-width: 1400px) 60vw, 800px"
+                      sizes="(max-width: 768px) 92vw, (max-width: 1400px) 60vw, 840px"
                       priority={index < 2}
                       loading={index < 2 ? "eager" : "lazy"}
                       style={{
@@ -208,7 +207,7 @@ export function KineticProjectReel() {
                         height: "100%",
                         objectFit: "cover",
                         display: "block",
-                        transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+                        transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                       }}
                     />
 
@@ -218,7 +217,7 @@ export function KineticProjectReel() {
                         position: "absolute",
                         inset: 0,
                         background:
-                          "linear-gradient(to top, rgba(14, 13, 11, 0.96) 0%, rgba(14, 13, 11, 0.35) 45%, transparent 100%)",
+                          "linear-gradient(to top, rgba(14, 13, 11, 0.96) 0%, rgba(14, 13, 11, 0.4) 48%, transparent 100%)",
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "space-between",
@@ -240,11 +239,13 @@ export function KineticProjectReel() {
                             fontSize: "12px",
                             fontWeight: 700,
                             color: "#FFFFFF",
-                            backgroundColor: "rgba(0, 0, 0, 0.7)",
-                            backdropFilter: "blur(8px)",
+                            backgroundColor: "rgba(0, 0, 0, 0.65)",
+                            backdropFilter: "blur(10px)",
+                            WebkitBackdropFilter: "blur(10px)",
                             padding: "5px 12px",
-                            borderRadius: "6px",
-                            border: "1px solid rgba(255, 255, 255, 0.15)",
+                            borderRadius: "9999px",
+                            border: "1px solid rgba(255, 255, 255, 0.18)",
+                            letterSpacing: "0.04em",
                           }}
                         >
                           {formattedIndex} / 10
@@ -272,13 +273,14 @@ export function KineticProjectReel() {
                       <div>
                         <h3
                           style={{
-                            fontFamily: "var(--font-display), serif",
+                            fontFamily: "var(--font-display), sans-serif",
                             fontSize: "clamp(20px, 2.4vw, 28px)",
                             fontWeight: 700,
                             color: "#FFFFFF",
                             margin: 0,
                             marginBottom: "8px",
                             lineHeight: 1.25,
+                            letterSpacing: "-0.02em",
                           }}
                         >
                           {project.fullTitle}
@@ -302,6 +304,7 @@ export function KineticProjectReel() {
                         </p>
 
                         <div
+                          className="reel-view-btn"
                           style={{
                             display: "inline-flex",
                             alignItems: "center",
@@ -312,14 +315,14 @@ export function KineticProjectReel() {
                             backgroundColor: "rgba(255, 255, 255, 0.14)",
                             backdropFilter: "blur(10px)",
                             WebkitBackdropFilter: "blur(10px)",
-                            border: "1px solid rgba(255, 255, 255, 0.2)",
-                            padding: "7px 16px",
+                            border: "1px solid rgba(255, 255, 255, 0.22)",
+                            padding: "7px 18px",
                             borderRadius: "9999px",
                             transition: "all var(--dur-fast) var(--ease-standard)",
                           }}
                         >
                           <span>{t("viewProject")}</span>
-                          <span aria-hidden="true">↗</span>
+                          <span className="reel-view-arrow" style={{ transition: "transform var(--dur-fast) var(--ease-standard)" }} aria-hidden="true">↗</span>
                         </div>
                       </div>
                     </div>
@@ -338,7 +341,7 @@ export function KineticProjectReel() {
             transform: translate3d(0, 0, 0);
           }
           to {
-            transform: translate3d(calc(-50% - (clamp(20px, 2.5vw, 32px) / 2)), 0, 0);
+            transform: translate3d(calc(-50% - (clamp(var(--space-5), 2.5vw, var(--space-8)) / 2)), 0, 0);
           }
         }
 
@@ -348,21 +351,31 @@ export function KineticProjectReel() {
         }
 
         .reel-track:hover .reel-card {
-          opacity: 0.75;
-          filter: brightness(0.9);
+          opacity: 0.72;
+          filter: brightness(0.88);
         }
 
         .reel-track .reel-card:hover {
           opacity: 1 !important;
           filter: brightness(1) !important;
-          transform: translateY(-8px) scale(1.02);
+          transform: translateY(-8px) scale(1.018);
           border-color: var(--color-accent) !important;
-          box-shadow: 0 28px 72px -12px rgba(0, 0, 0, 0.85), 0 0 0 1px var(--color-accent);
+          box-shadow: 0 32px 80px -16px rgba(0, 0, 0, 0.85), 0 0 0 1px var(--color-accent);
           z-index: 10;
         }
 
         .reel-track .reel-card:hover img {
           transform: scale(1.05);
+        }
+
+        .reel-track .reel-card:hover .reel-view-btn {
+          background-color: var(--color-accent) !important;
+          border-color: var(--color-accent) !important;
+          box-shadow: 0 4px 16px rgba(168, 83, 42, 0.4);
+        }
+
+        .reel-track .reel-card:hover .reel-view-arrow {
+          transform: translate(3px, -3px);
         }
 
         @media (prefers-reduced-motion: reduce) {

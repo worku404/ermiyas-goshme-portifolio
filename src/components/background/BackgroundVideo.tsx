@@ -66,12 +66,12 @@ export function BackgroundVideo() {
 
   return (
     <>
-      {/* Fixed Fullscreen Ambient Video Layer */}
+      {/* Hero-Scoped Ambient Video Layer */}
       <div
         className="site-video-background"
         aria-hidden="true"
         style={{
-          position: "fixed",
+          position: "absolute",
           inset: 0,
           width: "100%",
           height: "100%",
@@ -91,23 +91,38 @@ export function BackgroundVideo() {
             height: "100%",
             objectFit: "contain",
             objectPosition: "center center",
-            opacity: "0.5",
+            opacity: "0.9",
             filter: "var(--bg-video-filter, none)",
             mixBlendMode:
               "var(--bg-video-blend, normal)" as React.CSSProperties["mixBlendMode"],
-            transition: "opacity 0.4s ease, filter 0.4s ease",
+            transition: "opacity 0.9s ease, filter 0.9s ease",
           }}
         >
           <source src="/videos/bg-video.mp4" type="video/mp4" />
         </video>
+
+        {/* Soft bottom edge gradient transition into default page background */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "140px",
+            background: "linear-gradient(to bottom, transparent, var(--color-bg))",
+            pointerEvents: "none",
+            zIndex: 2,
+          }}
+        />
       </div>
 
-      {/* Subtle Architectural Drafting Grid Overlay */}
+      {/* Subtle Architectural Drafting Grid Overlay (Scoped to Hero) */}
       <div
         className="site-grid-overlay"
         aria-hidden="true"
         style={{
-          position: "fixed",
+          position: "absolute",
           inset: 0,
           width: "100%",
           height: "100%",
@@ -116,70 +131,72 @@ export function BackgroundVideo() {
           backgroundImage:
             "linear-gradient(to right, rgba(128, 128, 128, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(128, 128, 128, 0.04) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
+          maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
         }}
       />
 
-      {/* Discreet Pause/Play Control (WCAG 2.2.2 Compliant) */}
+      {/* Discreet Pause/Play Control (Scoped to Hero, WCAG 2.2.2 Compliant) */}
       <div
         style={{
-          position: "fixed",
-          bottom: "var(--space-4)",
-          left: "var(--space-4)",
-          zIndex: 90,
+          position: "absolute",
+          bottom: "clamp(var(--space-3), 3vw, var(--space-4))",
+          left: "clamp(var(--space-4), 4vw, var(--space-8))",
+          zIndex: 20,
         }}
       >
-          <button
-            type="button"
-            onClick={togglePlayback}
-            aria-label={
-              isPlaying
-                ? "Pause ambient background video"
-                : "Play ambient background video"
-            }
-            title={
-              isPlaying
-                ? "Pause background motion"
-                : "Play background motion"
-            }
+        <button
+          type="button"
+          onClick={togglePlayback}
+          aria-label={
+            isPlaying
+              ? "Pause ambient background video"
+              : "Play ambient background video"
+          }
+          title={
+            isPlaying
+              ? "Pause background motion"
+              : "Play background motion"
+          }
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "6px",
+            padding: "6px 10px",
+            borderRadius: "var(--radius-sm)",
+            border: "var(--border-hairline)",
+            backgroundColor: "var(--color-surface)",
+            color: "var(--color-text-muted)",
+            fontSize: "var(--fs-xs)",
+            cursor: "pointer",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            boxShadow: "var(--shadow-sm)",
+            transition:
+              "background-color var(--dur-fast) var(--ease-standard), color var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "var(--color-text)";
+            e.currentTarget.style.transform = "translateY(-1px)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "var(--color-text-muted)";
+            e.currentTarget.style.transform = "none";
+          }}
+        >
+          <span
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              padding: "6px 10px",
-              borderRadius: "var(--radius-sm)",
-              border: "var(--border-hairline)",
-              backgroundColor: "var(--color-surface)",
-              color: "var(--color-text-muted)",
-              fontSize: "var(--fs-xs)",
-              cursor: "pointer",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
-              boxShadow: "var(--shadow-sm)",
-              transition:
-                "background-color var(--dur-fast) var(--ease-standard), color var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard)",
+              display: "inline-block",
+              width: "6px",
+              height: "6px",
+              borderRadius: "50%",
+              backgroundColor: isPlaying ? "var(--color-accent)" : "#9E9E9E",
+              animation: isPlaying ? "pulse 2s infinite" : "none",
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "var(--color-text)";
-              e.currentTarget.style.transform = "translateY(-1px)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "var(--color-text-muted)";
-              e.currentTarget.style.transform = "none";
-            }}
-          >
-            <span
-              style={{
-                display: "inline-block",
-                width: "6px",
-                height: "6px",
-                borderRadius: "50%",
-                backgroundColor: isPlaying ? "var(--color-accent)" : "#9E9E9E",
-                animation: isPlaying ? "pulse 2s infinite" : "none",
-              }}
-            />
-            <span>{isPlaying ? "Motion: ON" : "Motion: OFF"}</span>
-          </button>
-        </div>
+          />
+          <span>{isPlaying ? "Motion: ON" : "Motion: OFF"}</span>
+        </button>
+      </div>
     </>
   );
 }

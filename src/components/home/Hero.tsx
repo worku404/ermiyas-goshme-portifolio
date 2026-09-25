@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CVDownloadButton } from "@/components/cv/CVDownloadButton";
+import { BackgroundVideo } from "@/components/background/BackgroundVideo";
+import { Container } from "@/components/layout/Container";
 import portfolio from "@/../content/portfolio.json";
 
 /**
@@ -23,41 +25,48 @@ export function Hero() {
     <section
       aria-label="Introduction"
       style={{
+        width: "100%",
         minHeight: "calc(100dvh - clamp(64px, 8vw, 88px))",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         paddingTop: "var(--space-4)",
         paddingBottom: "var(--space-8)",
-        borderBottom: "var(--border-hairline)",
         boxSizing: "border-box",
         position: "relative",
+        overflow: "hidden", // Restricts video background strictly to Hero
       }}
     >
-      <div
-        style={{
-          width: "100%",
-          display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit, minmax(min(100%, 460px), 1fr))",
-          gap: "clamp(var(--space-6), 6vw, var(--space-16))",
-          alignItems: "center",
-        }}
-      >
+      {/* Hero-Scoped Background Video */}
+      <BackgroundVideo />
+
+      {/* Hero Content aligned to layout Container */}
+      <Container size="wide" style={{ position: "relative", zIndex: 10 }}>
+        <div
+          style={{
+            width: "100%",
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 460px), 1fr))",
+            gap: "clamp(var(--space-6), 6vw, var(--space-16))",
+            alignItems: "center",
+          }}
+        >
         {/* Left Column: Heading & CTAs */}
         <div>
           <div
             style={{
               display: "inline-block",
-              padding: "var(--space-1) var(--space-3)",
+              padding: "6px 14px",
               backgroundColor: "var(--color-surface-2)",
               color: "var(--color-text-muted)",
               borderRadius: "var(--radius-sm)",
-              fontSize: "var(--fs-xs)",
+              fontSize: "12px",
               fontWeight: 600,
               textTransform: "uppercase",
-              letterSpacing: "0.08em",
+              letterSpacing: "0.1em",
               marginBottom: "var(--space-4)",
+              border: "var(--border-hairline)",
             }}
           >
             {portfolio.owner.school}
@@ -65,12 +74,13 @@ export function Hero() {
 
           <h1
             style={{
-              fontSize: "clamp(var(--fs-2xl), 5vw, var(--fs-4xl))",
-              lineHeight: "var(--lh-heading)",
-              fontFamily: "var(--font-display), serif",
+              fontSize: "clamp(48px, 6vw, 78px)",
+              lineHeight: 1.05,
+              fontFamily: "var(--font-display), sans-serif",
               color: "var(--color-text)",
-              marginBottom: "var(--space-3)",
-              letterSpacing: "-0.02em",
+              marginBottom: "var(--space-4)",
+              letterSpacing: "-0.03em",
+              fontWeight: 700,
             }}
           >
             {portfolio.owner.name}
@@ -78,10 +88,11 @@ export function Hero() {
 
           <p
             style={{
-              fontSize: "clamp(var(--fs-md), 2.5vw, var(--fs-lg))",
+              fontSize: "clamp(20px, 2.3vw, 26px)",
               color: "var(--color-accent)",
-              fontWeight: 500,
+              fontWeight: 600,
               marginBottom: "var(--space-4)",
+              letterSpacing: "-0.01em",
             }}
           >
             {portfolio.owner.statusLine}
@@ -89,10 +100,10 @@ export function Hero() {
 
           <p
             style={{
-              fontSize: "var(--fs-base)",
+              fontSize: "clamp(16px, 1.2vw, 19px)",
               color: "var(--color-text-muted)",
-              lineHeight: "var(--lh-body)",
-              maxWidth: "50ch",
+              lineHeight: 1.68,
+              maxWidth: "52ch",
               marginBottom: "var(--space-8)",
             }}
           >
@@ -105,7 +116,7 @@ export function Hero() {
             style={{
               display: "flex",
               flexWrap: "wrap",
-              gap: "var(--space-3)",
+              gap: "var(--space-4)",
               alignItems: "center",
             }}
           >
@@ -115,15 +126,15 @@ export function Hero() {
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "var(--space-3) var(--space-6)",
+                padding: "14px 32px",
                 backgroundColor: "var(--color-text)",
                 color: "var(--color-bg)",
                 borderRadius: "var(--radius-sm)",
                 fontWeight: 600,
-                fontSize: "var(--fs-base)",
+                fontSize: "16px",
                 textDecoration: "none",
                 transition:
-                  "background-color var(--dur-fast) var(--ease-standard)",
+                  "background-color var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard)",
               }}
             >
               {t("viewWork")}
@@ -139,24 +150,25 @@ export function Hero() {
             position: "relative",
             borderRadius: "var(--radius-md)",
             overflow: "hidden",
-            border: "var(--border-hairline)",
-            backgroundColor: "var(--color-surface-2)",
-            boxShadow: "var(--shadow-md)",
-            aspectRatio: "4 / 3",
+            aspectRatio: "1 / 1",
+            maxHeight: "min(640px, 68vh)",
+            width: "100%",
           }}
         >
           <Image
             src={heroImageSrc}
             alt={`${portfolio.owner.name} — ${portfolio.owner.statusLine} at ${portfolio.owner.school}`}
             priority={true}
-            width={800}
-            height={600}
+            width={1280}
+            height={1227}
             sizes="(max-width: 768px) 100vw, 50vw"
             style={{
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              objectPosition: "center 22%",
               display: "block",
+              opacity: "7",
             }}
           />
           <div
@@ -165,20 +177,21 @@ export function Hero() {
               bottom: 0,
               left: 0,
               right: 0,
-              padding: "var(--space-2) var(--space-4)",
-              background:
-                "linear-gradient(to top, rgba(0,0,0,0.75), transparent)",
+              padding: "var(--space-3) var(--space-5)",
               color: "#FFFFFF",
-              fontSize: "var(--fs-xs)",
+              fontSize: "13px",
               display: "flex",
               justifyContent: "space-between",
+              alignItems: "center",
+              letterSpacing: "0.02em",
             }}
           >
             <span style={{ fontWeight: 600 }}>{portfolio.owner.name}</span>
-            <span>{portfolio.owner.statusLine}</span>
+            <span style={{ opacity: 0.85 }}>{portfolio.owner.statusLine}</span>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </Container>
+  </section>
+);
 }

@@ -20,8 +20,8 @@ export async function generateMetadata({
     : `${portfolio.owner.name} — Architecture Portfolio`;
 
   const description = isAm
-    ? `${portfolio.owner.name} — የ3ኛ ዓመት የስነ-ህንፃ ተማሪ በአዲስ አበባ ዩኒቨርሲቲ (EiABC/SBE)።`
-    : `Official architecture portfolio of ${portfolio.owner.name}, 3rd-year architecture student at Addis Ababa University (EiABC/SBE).`;
+    ? `${portfolio.owner.name} — የስነ-ህንፃ ተማሪ በአዲስ አበባ ዩኒቨርሲቲ (EiABC/SBE)።`
+    : `Official architecture portfolio of ${portfolio.owner.name}, ${portfolio.owner.statusLine} at ${portfolio.owner.school}.`;
 
   return {
     title,
@@ -67,11 +67,13 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   return (
-    <Container size="wide">
+    <>
       <Hero />
-      <AboutSummary />
-      <KineticProjectReel />
-      <ContactCta />
-    </Container>
+      <Container size="wide">
+        <AboutSummary />
+        <KineticProjectReel />
+        <ContactCta />
+      </Container>
+    </>
   );
 }

@@ -7,30 +7,27 @@ import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { BackgroundVideo } from "@/components/background/BackgroundVideo";
 import { PortfolioAssistant } from "@/components/ai/PortfolioAssistant";
+import portfolio from "@/../content/portfolio.json";
 import "@/app/globals.css";
 
 /**
- * Self-hosted typography via next/font/local per docs/01-tech-stack.md & docs/02-design-system.md:
+ * Self-hosted architectural typography via next/font/local:
  *
- * Why next/font/local with pre-downloaded WOFF2 files:
- * 1. Fully offline and proxy-resilient: zero external network calls during static build.
- * 2. Inlines optimized CSS font declarations with display: 'swap' (no invisible text / FOIT).
- * 3. Space Grotesk: architectural grotesque heading font (--font-display).
- * 4. Inter: neutral, legible body copy font (--font-body).
- * 5. Noto Sans Ethiopic: native Amharic rendering without tofu boxes (--font-am).
+ * 1. Syne: structural, tectonic architectural display font (--font-display).
+ * 2. Plus Jakarta Sans: refined, highly legible contemporary body font (--font-body).
+ * 3. Noto Sans Ethiopic: native Amharic rendering without tofu boxes (--font-am).
  */
 const fontDisplay = localFont({
   src: [
     {
-      path: "../../../public/fonts/space-grotesk-400.woff2",
-      weight: "400",
+      path: "../../../public/fonts/syne-700.woff2",
+      weight: "700",
       style: "normal",
     },
     {
-      path: "../../../public/fonts/space-grotesk-700.woff2",
-      weight: "700",
+      path: "../../../public/fonts/syne-800.woff2",
+      weight: "800",
       style: "normal",
     },
   ],
@@ -41,12 +38,12 @@ const fontDisplay = localFont({
 const fontBody = localFont({
   src: [
     {
-      path: "../../../public/fonts/inter-400.woff2",
+      path: "../../../public/fonts/plus-jakarta-sans-400.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../../../public/fonts/inter-700.woff2",
+      path: "../../../public/fonts/plus-jakarta-sans-700.woff2",
       weight: "700",
       style: "normal",
     },
@@ -82,7 +79,7 @@ export const metadata: Metadata = {
     default: "Ermiyas Goshme — Architecture Portfolio",
   },
   description:
-    "Static architecture portfolio of Ermiyas Goshme, 3rd-year architecture student at AAU (EiABC/SBE). Human-centered design, cultural heritage, and contextual architecture.",
+    `Static architecture portfolio of ${portfolio.owner.name}, ${portfolio.owner.statusLine} at AAU (EiABC/SBE). Human-centered design, cultural heritage, and contextual architecture.`,
   alternates: {
     canonical: "/",
     languages: {
@@ -98,7 +95,7 @@ export const metadata: Metadata = {
     siteName: "Ermiyas Goshme Architecture Portfolio",
     title: "Ermiyas Goshme — Architecture Portfolio",
     description:
-      "Static architecture portfolio of Ermiyas Goshme, 3rd-year architecture student at AAU (EiABC/SBE).",
+      `Static architecture portfolio of ${portfolio.owner.name}, ${portfolio.owner.statusLine} at AAU (EiABC/SBE).`,
     images: [
       {
         url: "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-01.png",
@@ -112,7 +109,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ermiyas Goshme — Architecture Portfolio",
     description:
-      "Static architecture portfolio of Ermiyas Goshme, 3rd-year architecture student at AAU (EiABC/SBE).",
+      `Static architecture portfolio of ${portfolio.owner.name}, ${portfolio.owner.statusLine} at AAU (EiABC/SBE).`,
     images: [
       "/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-01.png",
     ],
@@ -173,7 +170,6 @@ export default async function LocaleLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <BackgroundVideo />
             <SiteHeader />
             <main
               style={{
@@ -181,7 +177,7 @@ export default async function LocaleLayout({
                 width: "100%",
                 position: "relative",
                 zIndex: 10,
-                paddingTop: "clamp(64px, 8vw, 88px)",
+                paddingTop: "clamp(92px, 9vw, 116px)",
               }}
             >
               {children}
