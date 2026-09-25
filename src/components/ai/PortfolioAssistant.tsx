@@ -352,54 +352,101 @@ export function PortfolioAssistant() {
             display: "inline-flex",
             alignItems: "center",
             gap: "9px",
-            padding: "9px 18px",
-            backgroundColor: "var(--color-surface)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
-            border: isOpen
-              ? "1px solid var(--color-accent)"
-              : "var(--border-hairline)",
+            padding: "10px 18px",
+            background: "linear-gradient(135deg, var(--color-accent) 0%, #c46332 100%)",
+            color: "#ffffff",
+            border: "1px solid rgba(255, 255, 255, 0.25)",
             borderRadius: "9999px",
-            boxShadow: "0 8px 24px -4px rgba(0, 0, 0, 0.18)",
-            color: "var(--color-text)",
+            boxShadow: isOpen
+              ? "0 0 0 3px rgba(168, 83, 42, 0.35), 0 12px 30px rgba(168, 83, 42, 0.55)"
+              : "0 8px 24px -2px rgba(168, 83, 42, 0.48), 0 2px 8px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.2) inset",
             cursor: "pointer",
-            fontFamily: "var(--font-mono, monospace)",
-            fontSize: "12.5px",
-            fontWeight: 600,
+            fontFamily: "var(--font-display), sans-serif",
+            fontSize: "13px",
+            fontWeight: 700,
             letterSpacing: "0.02em",
-            transition:
-              "all var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            transition: "all var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard)",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "var(--color-accent)";
-            e.currentTarget.style.transform = "translateY(-2px)";
+            e.currentTarget.style.transform = "translateY(-2px) scale(1.02)";
+            e.currentTarget.style.boxShadow =
+              "0 12px 30px -2px rgba(168, 83, 42, 0.62), 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.35) inset";
           }}
           onMouseLeave={(e) => {
-            if (!isOpen) {
-              e.currentTarget.style.borderColor = "var(--border-hairline)";
-            }
             e.currentTarget.style.transform = "none";
+            e.currentTarget.style.boxShadow = isOpen
+              ? "0 0 0 3px rgba(168, 83, 42, 0.35), 0 12px 30px rgba(168, 83, 42, 0.55)"
+              : "0 8px 24px -2px rgba(168, 83, 42, 0.48), 0 2px 8px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.2) inset";
           }}
         >
-          {/* Pulsing Status Indicator Dot */}
+          {/* Architectural Compass Icon Badge */}
           <span
             style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "22px",
+              height: "22px",
+              borderRadius: "50%",
+              backgroundColor: "rgba(255, 255, 255, 0.2)",
+              color: "#ffffff",
+              flexShrink: 0,
+            }}
+          >
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="4" r="2" />
+              <path d="M12 6L4 21" />
+              <path d="M12 6L20 21" />
+              <path d="M7 16h10" />
+            </svg>
+          </span>
+
+          <span style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.2)" }}>Ermi Arch AI</span>
+
+          {/* Active Live Radar Pulse Dot */}
+          <span
+            style={{
+              position: "relative",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
               width: "8px",
               height: "8px",
-              borderRadius: "50%",
-              backgroundColor: "var(--color-accent)",
-              boxShadow: "0 0 8px var(--color-accent)",
-              animation: "aiPulse 2s infinite ease-in-out",
+              marginLeft: "2px",
             }}
-          />
+            title="Studio Intelligence Online"
+          >
+            <span className="ai-live-ping" />
+            <span
+              style={{
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                backgroundColor: "#34d399",
+                boxShadow: "0 0 6px #34d399",
+              }}
+            />
+          </span>
 
-          <span>Ermi Arch AI</span>
-
+          {/* Expand/Close Glyph */}
           <span
             style={{
-              fontSize: "11px",
-              color: "var(--color-accent)",
-              opacity: 0.85,
+              fontSize: "12px",
+              fontWeight: 800,
+              opacity: 0.9,
+              marginLeft: "2px",
             }}
             aria-hidden="true"
           >
@@ -809,6 +856,26 @@ export function PortfolioAssistant() {
             transform: scale(1.3);
             opacity: 0.6;
           }
+        }
+
+        @keyframes aiRadarPing {
+          0% {
+            transform: scale(0.9);
+            opacity: 0.8;
+          }
+          70%, 100% {
+            transform: scale(2.6);
+            opacity: 0;
+          }
+        }
+
+        .ai-live-ping {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background-color: #34d399;
+          animation: aiRadarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
 
         .ai-dot {
