@@ -27,7 +27,7 @@ export async function generateMetadata({
       type: "profile",
       images: [
         {
-          url: "/images/owner/profile.png",
+          url: "/images/owner/ermiyas-goshme-hero.jpg",
           width: 800,
           height: 800,
           alt: `${portfolio.owner.name} — ${portfolio.owner.role}`,
@@ -38,7 +38,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["/images/owner/profile.png"],
+      images: ["/images/owner/ermiyas-goshme-hero.jpg"],
     },
   };
 }
