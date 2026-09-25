@@ -5,7 +5,7 @@
 
 ## 1. Goal
 
-Build a **static architecture portfolio website** for a 3rd-year architecture student. The site is a **general portfolio shown to people** (not a private link), and it includes a **CV download feature**.
+Build a **static architecture portfolio website** for an architecture student (status configured dynamically via `portfolio.json` `owner.statusLine`). The site is a **general portfolio shown to people** (not a private link), and it includes a **CV download feature**.
 
 - **Primary CTAs:** **"View Work"** and **"Download CV"**.
 - The site must present the owner's real academic projects and let a visitor download the CV in one click.
@@ -21,7 +21,7 @@ Design for the recruiter's 20-second scan first, then reward deeper reading.
 ## 3. Owner
 
 - **Name:** Ermiyas Goshme
-- **Role:** Architecture Student (3rd year), Addis Ababa University (EiABC/SBE)
+- **Role:** Architecture Student (status configured dynamically via `portfolio.json` `owner.statusLine`), Addis Ababa University (EiABC/SBE)
 - **Contact:** email `ermiermiyas000@gmail.com` (obfuscated on page), phone `+251996631973` (as a `tel:` link)
 
 All owner data is authoritative in [`../content/portfolio.json`](../content/portfolio.json) under `owner`.

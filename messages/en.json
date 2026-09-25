@@ -12,7 +12,7 @@
   "hero": {
     "viewWork": "View Work",
     "downloadCv": "Download CV",
-    "status": "3rd Year Architecture Student",
+    "status": "Architecture Student",
     "school": "Addis Ababa University (EiABC/SBE)"
   },
   "about": {
@@ -42,14 +42,20 @@
     "sectionTitle": "Let's Connect",
     "description": "Open to academic discourse, professional internships, and architectural collaborations.",
     "button": "Get in Touch",
+    "fullContactPage": "Full Contact Page",
     "phoneLabel": "Phone",
     "emailLabel": "Email"
   },
   "footer": {
-    "role": "Architecture Student",
-    "school": "EiABC / SBE — Addis Ababa University",
+    "role": "Architecture Student & Spatial Designer",
+    "school": "Addis Ababa University (EiABC / SBE)",
+    "location": "Addis Ababa, Ethiopia · UTC+3",
     "quickLinks": "Navigation",
-    "contact": "Contact",
+    "platforms": "Platforms & Social",
+    "studioHeading": "Studio & Stage",
+    "academicStage": "Architecture Student (EiABC)",
+    "availability": "Open to internships & collaborations",
+    "backToTop": "Back to top",
     "allRightsReserved": "All rights reserved."
   },
   "theme": {
@@ -67,16 +73,36 @@
     "work": "Work"
   },
   "workPage": {
-    "title": "Work",
+    "title": "Selected Architecture",
     "subtitle": "Complete catalog of 10 architectural studio projects, competition entries, and material research investigations.",
+    "colophonStrip": "10 Studio Projects & Competitions · EiABC / SBE · 2023–Present",
     "projectCount": "{count} Projects",
     "viewModeWalkthrough": "Spatial Walkthrough",
     "viewModeGrid": "Archive Grid",
+    "viewModeTable": "Index Table",
+    "filterAll": "All Projects",
+    "filterCompetition": "Competitions",
+    "filterStudio": "Academic Studio",
+    "filterCivic": "Civic & Mixed-Use",
     "exploreProject": "Explore Case Study",
     "inspectDrawings": "Inspect Drawings & Renders",
     "keyDrawings": "Key Drawings",
     "studioOrganizer": "Studio / Organizer",
-    "achievement": "Recognition"
+    "achievement": "Recognition",
+    "drawingSheets": "Drawings & Renders",
+    "drawingSheetCount": "{count} High-Res Sheets",
+    "sheetLabel": "Sheet",
+    "prevSheet": "Previous sheet",
+    "nextSheet": "Next sheet",
+    "prevProject": "Prev Project",
+    "nextProject": "Next Project",
+    "keyboardHint": "[ ← / → ] keys to glide between projects",
+    "tableIndex": "No.",
+    "tableTitle": "Project Title",
+    "tableType": "Typology",
+    "tableLocation": "Location",
+    "tableSheets": "Sheets",
+    "tableAction": "Case Study"
   },
   "project": {
     "typeLabel": "Typology",

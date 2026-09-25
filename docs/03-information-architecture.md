@@ -40,7 +40,7 @@ Slugs are the **stable contract**. They match `projects[].slug` in `portfolio.js
 
 ## 4. Home Page Sections (`/`)
 
-1. **Hero** — name, status line ("3rd year architecture student"), primary CTAs **View Work** + **Download CV**, one strong LCP image (eager).
+1. **Hero** — name, status line (`portfolio.owner.statusLine`), primary CTAs **View Work** + **Download CV**, one strong LCP image (eager).
 2. **About summary** — trimmed intro; link to `/about`.
 3. **Featured work** — a curated subset of `ProjectCard`s; link to `/work`.
 4. **Contact CTA** — invitation + link to `/contact`.

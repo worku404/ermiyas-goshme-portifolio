@@ -12,7 +12,7 @@
   "hero": {
     "viewWork": "ስራዎችን ይመልከቱ",
     "downloadCv": "ሲቪ ያውርዱ",
-    "status": "የ3ኛ ዓመት የስነ-ህንፃ ተማሪ",
+    "status": "የስነ-ህንፃ ተማሪ",
     "school": "አዲስ አበባ ዩኒቨርሲቲ (EiABC/SBE)"
   },
   "about": {
@@ -42,14 +42,20 @@
     "sectionTitle": "እንገናኝ",
     "description": "ለሙያዊ ስልጠና፣ ለአካዳሚክ ውይይት እና ለጋራ የስነ-ህንፃ ስራዎች ዝግጁ ነኝ።",
     "button": "መልዕክት ይላኩ",
+    "fullContactPage": "ሙሉ የአድራሻ ገጽ",
     "phoneLabel": "ስልክ",
     "emailLabel": "ኢሜይል"
   },
   "footer": {
-    "role": "የስነ-ህንፃ ተማሪ",
+    "role": "የስነ-ህንፃ ተማሪ እና የቦታ ዲዛይነር",
     "school": "ኢትዮ-አፍሪካ ስነ-ህንፃ ተቋም (EiABC) — አዲስ አበባ ዩኒቨርሲቲ",
+    "location": "አዲስ አበባ፣ ኢትዮጵያ · UTC+3",
     "quickLinks": "ማውጫ",
-    "contact": "አድራሻ",
+    "platforms": "ማህበራዊ ገጾች",
+    "studioHeading": "ስቱዲዮ እና ደረጃ",
+    "academicStage": "የስነ-ህንፃ ተማሪ (EiABC)",
+    "availability": "ለስራ ልምምድ እና ለትብብር ክፍት",
+    "backToTop": "ወደ ላይ ተመለስ",
     "allRightsReserved": "መብቱ በህግ የተጠበቀ ነው።"
   },
   "theme": {
@@ -67,16 +73,36 @@
     "work": "ስራዎች"
   },
   "workPage": {
-    "title": "ስራዎች",
+    "title": "የተመረጡ የስነ-ህንፃ ስራዎች",
     "subtitle": "የተሟሉ 10 የስነ-ህንፃ ስቱዲዮ ፕሮጀክቶች፣ የውድድር ስራዎች እና የቁሳቁስ ምርምር ጥናቶች ማውጫ።",
+    "colophonStrip": "10 የስቱዲዮ ፕሮጀክቶች እና ውድድሮች · ኢትዮ-አፍሪካ ስነ-ህንፃ ተቋም (EiABC) · 2023–አሁን",
     "projectCount": "{count} ፕሮጀክቶች",
     "viewModeWalkthrough": "ተከታታይ የስነ-ህንፃ ጉዞ",
     "viewModeGrid": "ማውጫ ሰሌዳ",
+    "viewModeTable": "የፕሮጀክቶች ሰንጠረዥ",
+    "filterAll": "ሁሉም ፕሮጀክቶች",
+    "filterCompetition": "የውድድር ስራዎች",
+    "filterStudio": "ስቱዲዮ ፕሮጀክቶች",
+    "filterCivic": "የህዝብ እና የተደባለቀ",
     "exploreProject": "ሙሉ ጥናቱን ይመልከቱ",
     "inspectDrawings": "ስዕሎች እና ንድፎችን ይመልከቱ",
     "keyDrawings": "ዋና የስነ-ህንፃ ንድፎች",
     "studioOrganizer": "ስቱዲዮ / አዘጋጅ",
-    "achievement": "የተሰጠ እውቅና"
+    "achievement": "የተሰጠ እውቅና",
+    "drawingSheets": "ንድፎች እና ስዕሎች",
+    "drawingSheetCount": "{count} ከፍተኛ ጥራት ንድፎች",
+    "sheetLabel": "ገጽ",
+    "prevSheet": "ቀዳሚ ገጽ",
+    "nextSheet": "ቀጣይ ገጽ",
+    "prevProject": "ቀዳሚ ፕሮጀክት",
+    "nextProject": "ቀጣይ ፕሮጀክት",
+    "keyboardHint": "በቀስት ቁልፎች (← / →) ፕሮጀክቶችን ይቀያይሩ",
+    "tableIndex": "ቁጥር",
+    "tableTitle": "የፕሮጀክት ርዕስ",
+    "tableType": "አይነት",
+    "tableLocation": "ቦታ",
+    "tableSheets": "ገጾች",
+    "tableAction": "ሙሉ ጥናት"
   },
   "project": {
     "typeLabel": "የፕሮጀክት አይነት",

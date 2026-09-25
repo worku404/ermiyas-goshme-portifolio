@@ -1,6 +1,6 @@
 # BroPortfolio — Spec Repo
 
-A **documentation-first "spec repo"** for a static Next.js architecture portfolio website for **Ermiyas Goshme** (3rd-year architecture student). This repo defines _what_ to build and _how_ to build it, before any code exists. An AI builder (or human) executes the staged prompts against these specs.
+A **documentation-first "spec repo"** for a static Next.js architecture portfolio website for **Ermiyas Goshme** (architecture student, status defined in `portfolio.json`). This repo defines _what_ to build and _how_ to build it, before any code exists. An AI builder (or human) executes the staged prompts against these specs.
 
 > **Prime directive:** the content in [`../content/portfolio.json`](../content/portfolio.json) is **GROUND TRUTH** extracted from the source PDF. Never invent, embellish, reorder, or drop content. **Display the owner's real images only** — never generate or reimagine imagery.
 
