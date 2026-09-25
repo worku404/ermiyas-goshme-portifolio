@@ -26,3 +26,11 @@ portfolio.projects.forEach(p => {
 console.log('Updated dimensions for', count, 'images');
 fs.writeFileSync(pJsonPath, JSON.stringify(portfolio, null, 2), 'utf8');
 "
+
+
+
+
+
+
+
+node -e "const fs = require('sharp'); const path = require('path'); const f = require('fs'); const sample = ['public/images/work/ethiopian-orthodox-church-design/ethiopian-orthodox-church-design-01.png', 'public/images/work/enda-mikael-palace-reimagination/enda-mikael-palace-reimagination-01.png']; for(const p of sample){ const orig = f.statSync(p).size; fs(p).webp({ quality: 80 }).toBuffer().then(b => console.log(p, (orig/1024).toFixed(1)+'KB -> '+(b.length/1024).toFixed(1)+'KB ('+Math.round(100*(1-b.length/orig))+'% saved)')); }"

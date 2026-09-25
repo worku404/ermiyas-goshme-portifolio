@@ -200,8 +200,8 @@ export function KineticProjectReel() {
                       width={1200}
                       height={700}
                       sizes="(max-width: 768px) 92vw, (max-width: 1400px) 60vw, 840px"
-                      priority={index < 2}
-                      loading={index < 2 ? "eager" : "lazy"}
+                      priority={false}
+                      loading="lazy"
                       style={{
                         width: "100%",
                         height: "100%",

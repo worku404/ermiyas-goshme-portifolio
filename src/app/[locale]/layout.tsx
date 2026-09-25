@@ -68,6 +68,7 @@ const fontAm = localFont({
   ],
   variable: "--font-am",
   display: "swap",
+  preload: false,
 });
 
 const SITE_URL =

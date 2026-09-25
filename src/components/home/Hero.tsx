@@ -18,7 +18,7 @@ import portfolio from "@/../content/portfolio.json";
  */
 export function Hero() {
   const t = useTranslations("hero");
-  const heroImageSrc = "/images/owner/ermiyas-goshme-hero.jpg";
+  const heroImageSrc = "/images/owner/ermiyas-goshme-hero.webp";
 
   return (
     <section
@@ -154,8 +154,9 @@ export function Hero() {
             src={heroImageSrc}
             alt={`${portfolio.owner.name} — ${portfolio.owner.statusLine} at ${portfolio.owner.school}`}
             priority={true}
-            width={1280}
-            height={1227}
+            fetchPriority="high"
+            width={800}
+            height={800}
             sizes="(max-width: 768px) 100vw, 50vw"
             style={{
               width: "100%",
@@ -163,7 +164,6 @@ export function Hero() {
               objectFit: "cover",
               objectPosition: "center 22%",
               display: "block",
-              opacity: "7",
             }}
           />
           <div
