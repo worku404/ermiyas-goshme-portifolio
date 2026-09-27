@@ -23,7 +23,7 @@ export async function generateMetadata({
  * Work catalog page (/work and /[locale]/work).
  *
  * Implements:
- * - Solid architectural canvas (backgroundColor: var(--color-bg)) eliminating background video interference.
+ * - Seamless architectural canvas letting ArchitecturalBackground (drafting grid & atmosphere) flow uninterrupted.
  * - Monumental Syne display typography matching Hero, About, and Contact.
  * - Architectural colophon strip with live project counter and academic affiliation.
  * - 3-mode curatorial showcase (Spatial Walkthrough, Archive Grid, Index Table).
@@ -43,7 +43,6 @@ export default async function WorkPage({
       style={{
         position: "relative",
         zIndex: 10,
-        backgroundColor: "var(--color-bg)",
         minHeight: "100vh",
         width: "100%",
         paddingBottom: "var(--space-16)",

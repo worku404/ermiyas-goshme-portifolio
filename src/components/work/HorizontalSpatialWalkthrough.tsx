@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -39,6 +40,29 @@ export function HorizontalSpatialWalkthrough({
   const [viewMode, setViewMode] = React.useState<ViewMode>("walkthrough");
   const [activeSheetIndex, setActiveSheetIndex] = React.useState(0);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Lock body & html scroll while walkthrough modal is open
+  React.useEffect(() => {
+    if (!isModalOpen) return;
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    const prevTouchAction = document.body.style.touchAction;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
+
+    return () => {
+      document.body.style.overflow = prevBodyOverflow;
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.body.style.touchAction = prevTouchAction;
+    };
+  }, [isModalOpen]);
 
   // Safe current project reference
   const safeIndex = Math.min(currentIndex, Math.max(0, projects.length - 1));
@@ -724,22 +748,32 @@ export function HorizontalSpatialWalkthrough({
       {/* =========================================================================
           FULLSCREEN WIDE-VIEW LIGHTBOX MODAL
           ========================================================================= */}
-      {isModalOpen && (
+      {isModalOpen && mounted && createPortal(
         <div
           role="dialog"
           aria-modal="true"
           aria-label={currentProject.fullTitle}
           style={{
             position: "fixed",
-            inset: 0,
-            zIndex: 99999,
-            backgroundColor: "rgba(8, 7, 6, 0.96)",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: "100vw",
+            height: "100dvh",
+            maxHeight: "100dvh",
+            zIndex: 100000,
+            backgroundColor: "rgba(8, 7, 6, 0.98)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "clamp(12px, 3vw, 32px)",
+            overflow: "hidden",
+            boxSizing: "border-box",
+            padding: 0,
+            margin: 0,
+            touchAction: "none",
           }}
         >
           {/* Backdrop Click Dismiss */}
@@ -765,15 +799,11 @@ export function HorizontalSpatialWalkthrough({
               position: "relative",
               zIndex: 1,
               width: "100%",
-              maxWidth: "1400px",
-              height: "90vh",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
-              borderRadius: "var(--radius-lg, 16px)",
               overflow: "hidden",
-              border: "1px solid rgba(255, 255, 255, 0.15)",
               backgroundColor: "#0d0c0a",
-              boxShadow: "0 32px 80px rgba(0, 0, 0, 0.8)",
             }}
           >
             {/* Modal Header */}
@@ -837,9 +867,17 @@ export function HorizontalSpatialWalkthrough({
             <div
               style={{
                 position: "relative",
-                flexGrow: 1,
+                flex: "1 1 0%",
+                minHeight: 0,
+                minWidth: 0,
                 width: "100%",
                 height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "clamp(8px, 1.5vw, 16px)",
+                boxSizing: "border-box",
+                overflow: "hidden",
               }}
             >
               <Image
@@ -968,7 +1006,8 @@ export function HorizontalSpatialWalkthrough({
               </Link>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
